@@ -36,7 +36,7 @@ Connection con = null;
       this.setIconImage(icone);
         this.setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
-        con = Coneccao.Coneccao.getConnection();
+        con = Conexao.Conexao.getConnection();
         }
 
     /**
@@ -308,8 +308,20 @@ Connection con = null;
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jblanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jblanActionPerformed
-   
-        
+       //gerar relatórios de clientes
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+       
+        if(confirma == JOptionPane.YES_OPTION){
+           
+            try {
+                JasperPrint print = JasperFillManager.fillReport("jasper_reports/combustiveis.jasper", null, con);
+                JasperViewer.viewReport(print, false);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+       
+       
+        }
     }//GEN-LAST:event_jblanActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
