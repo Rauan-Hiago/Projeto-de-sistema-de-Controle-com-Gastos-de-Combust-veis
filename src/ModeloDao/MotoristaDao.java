@@ -5,7 +5,7 @@
  */
 package ModeloDao;
 
-import Coneccao.Coneccao;
+import Conexao.Conexao;
 import Modelos.Combu;
 import Modelos.CombustivelModelo;
 import Modelos.Motoristas;
@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 public class MotoristaDao {
 
     public void create(Motoristas p) {
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -48,13 +48,13 @@ public class MotoristaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public List<Motoristas> readMotoristas() {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -88,7 +88,7 @@ public class MotoristaDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return (combu);
@@ -96,7 +96,7 @@ public class MotoristaDao {
     }
     public List<Motoristas> readListMotoristas() {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -127,7 +127,7 @@ public class MotoristaDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return (combu);
@@ -136,7 +136,7 @@ public class MotoristaDao {
 
     public void atualizar(Motoristas p) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -161,13 +161,13 @@ public class MotoristaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public void deletarCombustivel(Combu p) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -183,13 +183,13 @@ public class MotoristaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public void deletar(Motoristas p) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -205,7 +205,7 @@ public class MotoristaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 }

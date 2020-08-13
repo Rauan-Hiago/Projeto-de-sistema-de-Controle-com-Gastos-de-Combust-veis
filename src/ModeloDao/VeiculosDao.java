@@ -5,7 +5,7 @@
  */
 package ModeloDao;
 
-import Coneccao.Coneccao;
+import Conexao.Conexao;
 import Modelos.CombustivelModelo;
 import Modelos.Usuario;
 
@@ -27,7 +27,7 @@ public class VeiculosDao {
     
     public void deletar(Veiculos veic){
     
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         
         PreparedStatement stmt = null;
         
@@ -45,13 +45,13 @@ public class VeiculosDao {
            
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! "+ex);
         }finally{
-        Coneccao.closeConnection(con,stmt);
+        Conexao.closeConnection(con,stmt);
         }
     }
     
     public void atualizar(Veiculos veiculo){
     
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         
         PreparedStatement stmt = null;
         
@@ -82,12 +82,12 @@ public class VeiculosDao {
            
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! "+ex);
         }finally{
-        Coneccao.closeConnection(con,stmt);
+        Conexao.closeConnection(con,stmt);
         }
     }
     public List<Veiculos> read(){
     
-    Connection con = Coneccao.getConnection();
+    Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
@@ -125,7 +125,7 @@ public class VeiculosDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
         }finally{
-        Coneccao.closeConnection(con, stmt, rs);
+        Conexao.closeConnection(con, stmt, rs);
         
         }
         return(veic);
@@ -133,7 +133,7 @@ public class VeiculosDao {
     }
     public List<Veiculos> readListaVeiculos(){
     
-    Connection con = Coneccao.getConnection();
+    Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
@@ -171,7 +171,7 @@ public class VeiculosDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
         }finally{
-        Coneccao.closeConnection(con, stmt, rs);
+        Conexao.closeConnection(con, stmt, rs);
         
         }
         return(veic);
@@ -179,7 +179,7 @@ public class VeiculosDao {
     }
     public List<Veiculos> readbuscaPlacas(String nome){
     
-    Connection con = Coneccao.getConnection();
+    Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
@@ -218,7 +218,7 @@ public class VeiculosDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
         }finally{
-        Coneccao.closeConnection(con, stmt, rs);
+        Conexao.closeConnection(con, stmt, rs);
         
         }
         return(veic);
@@ -229,7 +229,7 @@ public class VeiculosDao {
     
     public void create(Veiculos p){
     
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         
         PreparedStatement stmt = null;
         
@@ -260,7 +260,7 @@ public class VeiculosDao {
            
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR "+ex);
         }finally{
-        Coneccao.closeConnection(con,stmt);
+        Conexao.closeConnection(con,stmt);
         }
     }
 }
