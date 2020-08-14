@@ -8,7 +8,7 @@ package View;
 
 
 import java.awt.Image;
-import Coneccao.Coneccao;
+import Conexao.Conexao;
 import java.awt.Toolkit;
 import static java.awt.Toolkit.getDefaultToolkit;
 import java.sql.*;
@@ -34,7 +34,7 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
-        con = Coneccao.getConnection();
+        con = Conexao.getConnection();
         
         Toolkit kit = getDefaultToolkit();
         Image icone = kit.getImage("");
@@ -74,7 +74,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jblan1 = new javax.swing.JMenuItem();
+        relatoriolancamentos = new javax.swing.JMenuItem();
         relatorioveiculo = new javax.swing.JMenuItem();
         relatoriomotorista = new javax.swing.JMenuItem();
         relatoriosecretaria = new javax.swing.JMenuItem();
@@ -238,15 +238,15 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/growth.png"))); // NOI18N
         jMenu2.setText("Relatórios");
 
-        jblan1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
-        jblan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/newspaper.png"))); // NOI18N
-        jblan1.setText("Lançamentos");
-        jblan1.addActionListener(new java.awt.event.ActionListener() {
+        relatoriolancamentos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        relatoriolancamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/newspaper.png"))); // NOI18N
+        relatoriolancamentos.setText("Lançamentos");
+        relatoriolancamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jblan1ActionPerformed(evt);
+                relatoriolancamentosActionPerformed(evt);
             }
         });
-        jMenu2.add(jblan1);
+        jMenu2.add(relatoriolancamentos);
 
         relatorioveiculo.setText("Veículos");
         relatorioveiculo.addActionListener(new java.awt.event.ActionListener() {
@@ -356,14 +356,14 @@ public class TelaInicial extends javax.swing.JFrame {
         veiculo.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    private void jblan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jblan1ActionPerformed
+    private void relatoriolancamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriolancamentosActionPerformed
         
         int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
        
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:/Users/Rauan Hiago/Desktop/banco de combustiveis/SCGC/BancoDeCombustiveis/src/Relatorios/lancamentos.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("relatorios/lancamentos.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -371,7 +371,7 @@ public class TelaInicial extends javax.swing.JFrame {
         
         
         }
-    }//GEN-LAST:event_jblan1ActionPerformed
+    }//GEN-LAST:event_relatoriolancamentosActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
       GerenciadorDeMotoristas veiculo = new GerenciadorDeMotoristas();
@@ -390,7 +390,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:/Users/Rauan Hiago/Desktop/banco de combustiveis/SCGC/BancoDeCombustiveis/src/Relatorios/veiculos.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("relatorios/veiculos.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -406,7 +406,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:/Users/Rauan Hiago/Desktop/banco de combustiveis/SCGC/BancoDeCombustiveis/src/Relatorios/motoristas.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("relatorios/motoristas.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -422,7 +422,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:/Users/Rauan Hiago/Desktop/banco de combustiveis/SCGC/BancoDeCombustiveis/src/Relatorios/secretarias.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("relatorios/secretarias.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -438,7 +438,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:/Users/Rauan Hiago/Desktop/banco de combustiveis/SCGC/BancoDeCombustiveis/src/Relatorios/combustíveis.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("relatorios/combustíveis.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -454,7 +454,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:/Users/Rauan Hiago/Desktop/banco de combustiveis/SCGC/BancoDeCombustiveis/src/Relatorios/usuarios.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("relatorios/usuarios.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -521,9 +521,9 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenuItem jblan1;
     public static javax.swing.JDesktopPane jdinterno;
     private javax.swing.JMenuItem relatoriocombustiveis;
+    private javax.swing.JMenuItem relatoriolancamentos;
     private javax.swing.JMenuItem relatoriomotorista;
     private javax.swing.JMenuItem relatoriosecretaria;
     private javax.swing.JMenuItem relatoriousuarios;

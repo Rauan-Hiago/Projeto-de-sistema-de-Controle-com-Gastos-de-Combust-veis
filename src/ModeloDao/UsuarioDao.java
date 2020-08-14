@@ -5,7 +5,7 @@
  */
 package ModeloDao;
 
-import Coneccao.Coneccao;
+import Conexao.Conexao;
 import Modelos.CombustivelModelo;
 
 import Modelos.Usuario;
@@ -22,7 +22,7 @@ public class UsuarioDao {
 
     public void deletar(Usuario p) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -38,13 +38,13 @@ public class UsuarioDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public void create(Usuario p) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -70,14 +70,14 @@ public class UsuarioDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public boolean chekarUser(String nome) {
         boolean chek = false;
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -94,7 +94,7 @@ public class UsuarioDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return chek;
@@ -104,7 +104,7 @@ public class UsuarioDao {
     public boolean chekar(String login, String senha) {
 
         boolean chek = false;
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -122,7 +122,7 @@ public class UsuarioDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return chek;
@@ -131,7 +131,7 @@ public class UsuarioDao {
 
     public void atualizar(Usuario p) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -157,13 +157,13 @@ public class UsuarioDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public List<Usuario> read() {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -196,7 +196,7 @@ public class UsuarioDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return (combu);

@@ -5,7 +5,7 @@
  */
 package ModeloDao;
 
-import Coneccao.Coneccao;
+import Conexao.Conexao;
 import Modelos.CombustivelModelo;
 import Modelos.Secretaria;
 import Modelos.Usuario;
@@ -29,7 +29,7 @@ public class SecretariaDao {
 
     public void atualizar(Secretaria sec) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -53,13 +53,13 @@ public class SecretariaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public void deletar(Secretaria sec) {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -75,13 +75,13 @@ public class SecretariaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 
     public List<Secretaria> read() {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -112,7 +112,7 @@ public class SecretariaDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return (sec);
@@ -122,7 +122,7 @@ public class SecretariaDao {
     public boolean checarSecretaria(String sec) {
         boolean retorno = false;
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -142,7 +142,7 @@ public class SecretariaDao {
 
     public List<Secretaria> ListarSecretarias() {
 
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -172,7 +172,7 @@ public class SecretariaDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt, rs);
+            Conexao.closeConnection(con, stmt, rs);
 
         }
         return (sec);
@@ -180,7 +180,7 @@ public class SecretariaDao {
     }
 
     public void create(Secretaria sec) {
-        Connection con = Coneccao.getConnection();
+        Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
 
@@ -205,7 +205,7 @@ public class SecretariaDao {
 
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
-            Coneccao.closeConnection(con, stmt);
+            Conexao.closeConnection(con, stmt);
         }
     }
 }

@@ -5,7 +5,7 @@
  */
 package View;
 
-import Coneccao.Coneccao;
+import Conexao.Conexao;
 import ModeloDao.CombustivelDao;
 import ModeloDao.SecretariaDao;
 import Modelos.CombustivelModelo;
@@ -666,11 +666,9 @@ public class LancamentoCombustivel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Connection conn = Coneccao.getConnection();
+        Connection conn = Conexao.getConnection();
         String src = "carros.jasper";
-        
         JasperPrint jasperPrint = null;
-        
     try {
         jasperPrint = JasperFillManager.fillReport(src, null, conn);
     } catch (JRException ex) {
