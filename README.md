@@ -2,4 +2,4 @@
 
 TCC2 de Rauan Hiago da UFERSA Angicos.
 
-Defesa em Setembro?
+Defesa em Setembro? Assim esperamos!
