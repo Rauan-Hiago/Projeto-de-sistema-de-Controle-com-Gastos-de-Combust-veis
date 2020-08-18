@@ -223,6 +223,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu2.add(relatoriolancamentos);
 
+        relatorioveiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/school-bus.png"))); // NOI18N
         relatorioveiculo.setText("Veículos");
         relatorioveiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +232,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu2.add(relatorioveiculo);
 
+        relatoriomotorista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/taxi-driver.png"))); // NOI18N
         relatoriomotorista.setText("Motoristas");
         relatoriomotorista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +241,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu2.add(relatoriomotorista);
 
+        relatoriosecretaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/home.png"))); // NOI18N
         relatoriosecretaria.setText("Secretarias");
         relatoriosecretaria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +250,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu2.add(relatoriosecretaria);
 
+        relatoriocombustiveis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/gas-station.png"))); // NOI18N
         relatoriocombustiveis.setText("Combustíveis");
         relatoriocombustiveis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +259,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu2.add(relatoriocombustiveis);
 
+        relatoriousuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/man.png"))); // NOI18N
         relatoriousuarios.setText("Usuários");
         relatoriousuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
