@@ -9,12 +9,12 @@ package View;
  *
  * @author Rauan Hiago
  */
-public class CriarLogin extends javax.swing.JInternalFrame {
+public class CadUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CriarLogin
      */
-    public CriarLogin() {
+    public CadUsuario() {
         initComponents();
     }
 

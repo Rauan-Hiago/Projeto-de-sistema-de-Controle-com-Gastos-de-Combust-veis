@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rauan Hiago
  */
-public class CadastroDeCombustivel extends javax.swing.JInternalFrame {
+public class CadCombustivel extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroDeCombustivel
      */
-    public CadastroDeCombustivel() {
+    public CadCombustivel() {
         initComponents();
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/gas-station.png")));
         readTabelaCom();

@@ -25,9 +25,9 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Rauan Hiago
  */
-public class LancamentoCombustivel extends javax.swing.JInternalFrame {
+public class cadLancamento extends javax.swing.JInternalFrame {
     
-    public LancamentoCombustivel(String nome){
+    public cadLancamento(String nome){
      initComponents();
      String nome1 = nome;
        txtsec.setText(nome);
@@ -39,7 +39,7 @@ public class LancamentoCombustivel extends javax.swing.JInternalFrame {
     }
  
     
- public LancamentoCombustivel() {
+ public cadLancamento() {
         initComponents();
         
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/check.png")));
@@ -622,18 +622,18 @@ public class LancamentoCombustivel extends javax.swing.JInternalFrame {
     private void jbmaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmaisActionPerformed
       String combo = (String) jComboBox1.getSelectedItem();
        if(combo == "Gerenciar Secretaria"){
-         CadastroDeSecretaria list = new CadastroDeSecretaria();
+         CadSecretaria list = new CadSecretaria();
          TelaInicial.jdinterno.add(list);
          list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
          list.setVisible(true);
        }else if(combo =="Gerenciar Veículos"){
-       CadastroDeveiculos list = new CadastroDeveiculos();
+       CadVeiculo list = new CadVeiculo();
          TelaInicial.jdinterno.add(list);
          list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
          list.setVisible(true);
        
        }else if(combo =="Gerenciar Motoristas"){
-       GerenciadorDeMotoristas list = new GerenciadorDeMotoristas();
+       CadMotorista list = new CadMotorista();
          TelaInicial.jdinterno.add(list);
          list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
          list.setVisible(true);
@@ -645,7 +645,7 @@ public class LancamentoCombustivel extends javax.swing.JInternalFrame {
          list.setVisible(true);
        
        }else if(combo == "Gerenciar Combustíveis"){
-       CadastroDeCombustivel list = new CadastroDeCombustivel();
+       CadCombustivel list = new CadCombustivel();
          TelaInicial.jdinterno.add(list);
          list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
          list.setVisible(true);

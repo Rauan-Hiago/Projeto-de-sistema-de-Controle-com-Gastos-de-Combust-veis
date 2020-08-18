@@ -9,8 +9,8 @@ import ModeloDao.SecretariaDao;
 import ModeloDao.VeiculosDao;
 import Modelos.Secretaria;
 import Modelos.Veiculos;
-import static View.LancamentoCombustivel.txtplaca;
-import static View.LancamentoCombustivel.txtsec;
+import static View.cadLancamento.txtplaca;
+import static View.cadLancamento.txtsec;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 

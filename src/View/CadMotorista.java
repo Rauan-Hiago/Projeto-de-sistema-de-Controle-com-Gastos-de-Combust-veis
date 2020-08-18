@@ -10,10 +10,10 @@ import ModeloDao.MotoristaDao;
 import ModeloDao.SecretariaDao;
 import Modelos.CombustivelModelo;
 import Modelos.Motoristas;
-import static View.LancamentoCombustivel.txtcom;
-import static View.LancamentoCombustivel.txtplaca;
-import static View.LancamentoCombustivel.txtsec;
-import static View.LancamentoCombustivel.txtuser;
+import static View.cadLancamento.txtcom;
+import static View.cadLancamento.txtplaca;
+import static View.cadLancamento.txtsec;
+import static View.cadLancamento.txtuser;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,12 +22,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rauan Hiago
  */
-public class GerenciadorDeMotoristas extends javax.swing.JInternalFrame {
+public class CadMotorista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GerenciadorDeMotoristas
      */
-    public GerenciadorDeMotoristas() {
+    public CadMotorista() {
         initComponents();
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/taxi-driver.png")));
         readTabela();

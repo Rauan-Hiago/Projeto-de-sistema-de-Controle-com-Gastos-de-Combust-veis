@@ -295,7 +295,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        CadastroDeCombustivel com = new CadastroDeCombustivel();
+        CadCombustivel com = new CadCombustivel();
         jdinterno.add(com);
         com.setLocation(jdinterno.getWidth()/2 - com.getWidth()/2, jdinterno.getHeight()/2 - com.getHeight()/2);
        
@@ -304,7 +304,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        LancamentoCombustivel lan = new LancamentoCombustivel();
+        cadLancamento lan = new cadLancamento();
         jdinterno.add(lan);
         lan.setLocation(jdinterno.getWidth()/2 - lan.getWidth()/2, jdinterno.getHeight()/2 - lan.getHeight()/2);
         lan.setVisible(true);
@@ -323,14 +323,14 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        CadastroDeSecretaria sec = new CadastroDeSecretaria();
+        CadSecretaria sec = new CadSecretaria();
         jdinterno.add(sec);
         sec.setLocation(jdinterno.getWidth()/2 - sec.getWidth()/2, jdinterno.getHeight()/2 - sec.getHeight()/2);
         sec.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        CadastroDeveiculos veiculo = new CadastroDeveiculos();
+        CadVeiculo veiculo = new CadVeiculo();
         jdinterno.add(veiculo);
         veiculo.setLocation(jdinterno.getWidth()/2 - veiculo.getWidth()/2, jdinterno.getHeight()/2 - veiculo.getHeight()/2);
         veiculo.setVisible(true);
@@ -354,7 +354,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_relatoriolancamentosActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-      GerenciadorDeMotoristas veiculo = new GerenciadorDeMotoristas();
+      CadMotorista veiculo = new CadMotorista();
         jdinterno.add(veiculo);
         veiculo.setLocation(jdinterno.getWidth()/2 - veiculo.getWidth()/2, jdinterno.getHeight()/2 - veiculo.getHeight()/2);
         veiculo.setVisible(true);

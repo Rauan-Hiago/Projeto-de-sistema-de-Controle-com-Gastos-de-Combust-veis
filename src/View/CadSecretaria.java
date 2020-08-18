@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rauan Hiago
  */
-public class CadastroDeSecretaria extends javax.swing.JInternalFrame {
+public class CadSecretaria extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroDeSecretaria
      */
-    public CadastroDeSecretaria() {
+    public CadSecretaria() {
         initComponents();
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/home.png")));
         readtable();

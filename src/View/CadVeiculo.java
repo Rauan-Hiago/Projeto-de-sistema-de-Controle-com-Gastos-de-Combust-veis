@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rauan Hiago
  */
-public class CadastroDeveiculos extends javax.swing.JInternalFrame {
+public class CadVeiculo extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroDeveiculos
      */
-    public CadastroDeveiculos() {
+    public CadVeiculo() {
         initComponents();
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/school-bus.png")));
         readTable();
