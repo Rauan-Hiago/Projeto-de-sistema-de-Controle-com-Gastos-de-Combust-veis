@@ -59,12 +59,8 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -142,14 +138,6 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/user (4).png"))); // NOI18N
-        jMenuItem3.setText("Excluir");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/user (3).png"))); // NOI18N
-        jMenuItem4.setText("Editar");
-        jMenu1.add(jMenuItem4);
-
         jMenuBar1.add(jMenu1);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/gas-station.png"))); // NOI18N
@@ -164,26 +152,13 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem5);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/delete.png"))); // NOI18N
-        jMenuItem6.setText("Excluir");
-        jMenu4.add(jMenuItem6);
-
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pencil.png"))); // NOI18N
-        jMenuItem7.setText("Alterar");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
-
         jMenuBar1.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/check.png"))); // NOI18N
         jMenu5.setText("Lançamentos");
 
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/plus.png"))); // NOI18N
-        jMenuItem8.setText("Combustíveis");
+        jMenuItem8.setText("Lançamento");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -197,7 +172,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu7.setText("Veículos");
 
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/plus.png"))); // NOI18N
-        jMenuItem10.setText("Adicionar");
+        jMenuItem10.setText("Cadastrar");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -225,7 +200,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu8.setText("Motoristas");
 
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/plus.png"))); // NOI18N
-        jMenuItem11.setText("Gerenciar Motoristas");
+        jMenuItem11.setText("cadastrar");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
@@ -238,7 +213,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/growth.png"))); // NOI18N
         jMenu2.setText("Relatórios");
 
-        relatoriolancamentos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        relatoriolancamentos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
         relatoriolancamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/newspaper.png"))); // NOI18N
         relatoriolancamentos.setText("Lançamentos");
         relatoriolancamentos.addActionListener(new java.awt.event.ActionListener() {
@@ -380,10 +355,6 @@ public class TelaInicial extends javax.swing.JFrame {
         veiculo.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
     private void relatorioveiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioveiculoActionPerformed
 int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
        
@@ -514,11 +485,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     public static javax.swing.JDesktopPane jdinterno;
