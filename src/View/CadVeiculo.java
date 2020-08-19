@@ -346,6 +346,9 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
+        
+         if(confirme == JOptionPane.YES_OPTION){ 
         if (txtplaca.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
         } else if (txtano.getText().trim().isEmpty()) {
@@ -383,8 +386,13 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
 
                 readTable();
 
-            }
-        }        // TODO add your handling code here:
+            }else {
+            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+        }
+        }  
+         }else if(confirme == JOptionPane.NO_OPTION){
+                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+                }// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtveiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtveiculoKeyReleased

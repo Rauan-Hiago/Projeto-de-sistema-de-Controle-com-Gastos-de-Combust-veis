@@ -279,6 +279,9 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtcomMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar esses dados?", title, JOptionPane.YES_NO_OPTION);
+        
+         if(confirme == JOptionPane.YES_OPTION){ 
         if (jtcom.getSelectedRow() != -1) {
             Combu commo = new Combu();
             CombustivelDao dao = new CombustivelDao();
@@ -294,7 +297,13 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
             txtdata.setText("");
 
             readTabelaCom();
-        }
+        } else{JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+            }
+         
+         }else if(confirme == JOptionPane.NO_OPTION){
+                  JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+         }
+                 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

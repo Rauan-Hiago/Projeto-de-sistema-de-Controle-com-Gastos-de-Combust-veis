@@ -521,6 +521,9 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar estes dados?", title, JOptionPane.YES_NO_OPTION);
+        
+            if(confirme == JOptionPane.YES_OPTION){
         if (txtplaca.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
         } else if (txtcom.getText().trim().isEmpty()) {
@@ -554,8 +557,14 @@ public class cadLancamento extends javax.swing.JInternalFrame {
                 txtdata.setText("");
 
                 readTabela();
+            }else {
+            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+            
             }
         }
+            }else if(confirme == JOptionPane.NO_OPTION){
+                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+                }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jtcombustiveisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtcombustiveisKeyReleased

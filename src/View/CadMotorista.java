@@ -308,6 +308,9 @@ public class CadMotorista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
+        
+        if(confirme == JOptionPane.YES_OPTION){
         if (txtnome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo nome!!!!!");
         } else if (txtcpf.getText().trim().isEmpty()) {
@@ -335,8 +338,13 @@ public class CadMotorista extends javax.swing.JInternalFrame {
                 txtdata.setText("");
 
                 readTabela();
+            }else {
+            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
             }
         }
+        }else if(confirme == JOptionPane.NO_OPTION){
+                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+                }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
