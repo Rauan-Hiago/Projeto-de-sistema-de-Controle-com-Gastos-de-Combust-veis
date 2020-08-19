@@ -398,7 +398,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("relatorios/secretarias.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("Relatorios/Secretarias.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -430,7 +430,7 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
         if(confirma == JOptionPane.YES_OPTION){
             
             try {
-                JasperPrint print = JasperFillManager.fillReport("relatorios/usuarios.jasper", null, con);
+                JasperPrint print = JasperFillManager.fillReport("Relatorios/usuarios.jasper", null, con);
                  JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
