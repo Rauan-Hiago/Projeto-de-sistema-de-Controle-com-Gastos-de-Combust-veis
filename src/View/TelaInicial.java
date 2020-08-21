@@ -80,6 +80,7 @@ public class TelaInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Página Principal");
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/gas-station (1).png"))); // NOI18N
 
         jdinterno.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -88,17 +89,16 @@ public class TelaInicial extends javax.swing.JFrame {
         jdinterno.setLayout(jdinternoLayout);
         jdinternoLayout.setHorizontalGroup(
             jdinternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdinternoLayout.createSequentialGroup()
-                .addGap(391, 391, 391)
-                .addComponent(jLabel1)
-                .addGap(180, 180, 180))
+            .addGroup(jdinternoLayout.createSequentialGroup()
+                .addGap(236, 236, 236)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         jdinternoLayout.setVerticalGroup(
             jdinternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdinternoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdinternoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
         );
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/notebook.png"))); // NOI18N
@@ -276,7 +276,9 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdinterno)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jdinterno))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
