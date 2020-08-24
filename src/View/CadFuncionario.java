@@ -43,6 +43,13 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtfunc = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtnome = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
@@ -51,15 +58,9 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jtfunc = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         txtcpd = new javax.swing.JFormattedTextField();
         txtdata = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
 
         jTextField6.setText("jTextField6");
 
@@ -94,32 +95,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Gerenciador de Usuário");
 
-        txtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemailActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Nome:");
-
-        jLabel2.setText("CPF:");
-
-        jLabel3.setText("Email:");
-
-        jLabel4.setText("Cargo:");
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/confirm.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela de dados dos Usuários"));
 
         jtfunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -149,7 +125,49 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jtfunc);
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/recycle-bin.png"))); // NOI18N
+        jButton3.setPreferredSize(new java.awt.Dimension(60, 50));
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/confirm.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setPreferredSize(new java.awt.Dimension(60, 50));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rectification.png"))); // NOI18N
+        jButton2.setPreferredSize(new java.awt.Dimension(60, 50));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton2MouseEntered(evt);
@@ -161,17 +179,41 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/recycle-bin.png"))); // NOI18N
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton3MouseEntered(evt);
-            }
-        });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Usuário"));
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                txtemailActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("CPF:");
+
+        jLabel3.setText("Email:");
+
+        jLabel4.setText("Cargo:");
 
         try {
             txtcpd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -195,15 +237,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jButton2)
-                                .addGap(32, 32, 32)
-                                .addComponent(jButton3)))
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -220,14 +254,11 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(txtcpd, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(347, 347, 347))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,51 +277,37 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton3))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtemailActionPerformed
 
     public void readTabela() {
         DefaultTableModel produtos = (DefaultTableModel) jtfunc.getModel();
@@ -312,9 +329,108 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }
 
     }
+    private void jtfuncKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfuncKeyReleased
+        if (jtfunc.getSelectedRow() != -1) {
+            txtnome.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 1).toString());
+            txtemail.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 2).toString());
+            txtcpd.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 3).toString());
+            txtcargo.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 4).toString());
+            txtdata.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 5).toString());
+        }
+    }//GEN-LAST:event_jtfuncKeyReleased
+
+    private void jtfuncMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfuncMouseClicked
+        if (jtfunc.getSelectedRow() != -1) {
+            txtnome.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 1).toString());
+            txtemail.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 2).toString());
+            txtcpd.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 3).toString());
+            txtcargo.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 4).toString());
+            txtdata.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 5).toString());
+        }
+    }//GEN-LAST:event_jtfuncMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
+
+        if(confirme == JOptionPane.YES_OPTION){
+            if (jtfunc.getSelectedRow() != -1) {
+                Usuario commo = new Usuario();
+                UsuarioDao dao = new UsuarioDao();
+
+                commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
+                dao.deletar(commo);
+                txtcargo.setText("");
+                txtcpd.setText("");
+                txtemail.setText("");
+                txtnome.setText("");
+                txtdata.setText("");
+
+                readTabela();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
+            }
+        }else if(confirme == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jButton1.setToolTipText("Excluir Funcionário!");
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
+
+        if(confirme == JOptionPane.YES_OPTION){
+
+            if (txtcargo.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Cargo!!!!!");
+            } else if (txtcpd.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo CPF!!!!!");
+
+            } else if (txtemail.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Email!!!!!");
+            } else if (txtnome.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Nome!!!!!");
+            } else {
+                if (jtfunc.getSelectedRow() != -1) {
+                    Usuario commo = new Usuario();
+                    UsuarioDao dao = new UsuarioDao();
+
+                    commo.setNome(txtnome.getText());
+                    commo.setCpf(txtcpd.getText());
+                    commo.setEmail(txtemail.getText());
+                    commo.setCargo(txtcargo.getText());
+                    commo.setData(txtdata.getText());
+
+                    commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
+                    dao.atualizar(commo);
+                    txtcargo.setText("");
+                    txtcpd.setText("");
+                    txtemail.setText("");
+                    txtnome.setText("");
+                    txtdata.setText("");
+
+                    readTabela();
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+                }
+            }
+        }else if(confirme == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jButton2.setToolTipText("Editar Funcionário!");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseEntered
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
- if (txtcargo.getText().trim().isEmpty()) {
+
+        if (txtcargo.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Cargo.");
         } else if (txtcpd.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo CPF.!");
@@ -351,108 +467,13 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jtfuncKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfuncKeyReleased
-        if (jtfunc.getSelectedRow() != -1) {
-            txtnome.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 1).toString());
-            txtemail.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 2).toString());
-            txtcpd.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 3).toString());
-            txtcargo.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 4).toString());
-            txtdata.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 5).toString());
-        }
-    }//GEN-LAST:event_jtfuncKeyReleased
-
-    private void jtfuncMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfuncMouseClicked
-        if (jtfunc.getSelectedRow() != -1) {
-            txtnome.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 1).toString());
-            txtemail.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 2).toString());
-            txtcpd.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 3).toString());
-            txtcargo.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 4).toString());
-            txtdata.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 5).toString());
-        }
-    }//GEN-LAST:event_jtfuncMouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
-         
-        if(confirme == JOptionPane.YES_OPTION){
-       
-        if (txtcargo.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Cargo!!!!!");
-        } else if (txtcpd.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo CPF!!!!!");
-
-        } else if (txtemail.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Email!!!!!");
-        } else if (txtnome.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Nome!!!!!");
-        } else {
-            if (jtfunc.getSelectedRow() != -1) {
-                Usuario commo = new Usuario();
-                UsuarioDao dao = new UsuarioDao();
-
-                commo.setNome(txtnome.getText());
-                commo.setCpf(txtcpd.getText());
-                commo.setEmail(txtemail.getText());
-                commo.setCargo(txtcargo.getText());
-                commo.setData(txtdata.getText());
-
-                commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
-                dao.atualizar(commo);
-                txtcargo.setText("");
-                txtcpd.setText("");
-                txtemail.setText("");
-                txtnome.setText("");
-                txtdata.setText("");
-
-                readTabela();
-
-            }else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
-        }
-        }
-        }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
-                }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
-        
-            if(confirme == JOptionPane.YES_OPTION){
-            if (jtfunc.getSelectedRow() != -1) {
-            Usuario commo = new Usuario();
-            UsuarioDao dao = new UsuarioDao();
-
-            commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
-            dao.deletar(commo);
-            txtcargo.setText("");
-            txtcpd.setText("");
-            txtemail.setText("");
-            txtnome.setText("");
-            txtdata.setText("");
-
-            readTabela();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
-        }
-                }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
-                }
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-       jButton1.setToolTipText("Cadastsar Funcionário!");
+        jButton1.setToolTipText("Cadastsar Funcionário!");
     }//GEN-LAST:event_jButton1MouseEntered
 
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-     jButton2.setToolTipText("Editar Funcionário!");        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseEntered
-
-    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-       jButton1.setToolTipText("Excluir Funcionário!");
-    }//GEN-LAST:event_jButton3MouseEntered
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -466,7 +487,8 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
