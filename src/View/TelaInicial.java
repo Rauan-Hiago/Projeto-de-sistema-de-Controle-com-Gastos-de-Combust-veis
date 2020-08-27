@@ -87,7 +87,7 @@ public class TelaInicial extends javax.swing.JFrame {
         );
         jdinternoLayout.setVerticalGroup(
             jdinternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/notebook.png"))); // NOI18N
