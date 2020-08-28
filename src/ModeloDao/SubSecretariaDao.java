@@ -54,8 +54,7 @@ public class SubSecretariaDao {
             String ano = sec.getData().substring(6);
 
             String datamysql = ano + "-" + mes + "-" + dia;
-
-            stmt = con.prepareStatement("INSERT INTO secretaria (nome,datas) values(?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO secretaria (nome,datas) values(?,?)");
             stmt.setString(1, sec.getNome());
             stmt.setString(2, datamysql);
 

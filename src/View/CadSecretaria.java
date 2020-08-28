@@ -454,10 +454,10 @@ jButton2.setToolTipText("Editar Secretaria!");        // TODO add your handling 
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void botaosubsecretariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosubsecretariaActionPerformed
-     
+
         
-      
-         CadSubsecretaria list = new CadSubsecretaria();
+        
+        CadSubsecretaria list = new CadSubsecretaria();
          TelaInicial.jdinterno.add(list);
          list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
          list.setVisible(true);
