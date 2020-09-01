@@ -50,6 +50,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        BotaoLimpar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtnome = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
@@ -182,12 +183,23 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
+        BotaoLimpar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotaoLimpar.setText("Limpar");
+        BotaoLimpar.setPreferredSize(new java.awt.Dimension(71, 52));
+        BotaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,7 +212,8 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Usuário"));
@@ -437,8 +450,11 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Preencha o campo Email.");
         } else if (txtnome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome.");
-        }else if(txtcpd.getText().length()!= 14){
-            JOptionPane.showMessageDialog(null, "O úmero de CPF não está completo! Digite novamente.");
+        } else if (txtdata.getText().length() != 10 ) {
+            JOptionPane.showMessageDialog(null, "Preencha o Campo Data de Cadastro!");
+        }
+        else if(txtcpd.getText().length()!= 14){
+            JOptionPane.showMessageDialog(null, "O número de CPF não está completo! Digite novamente.");
         } else {
             UsuarioDao dao = new UsuarioDao();
             if (dao.chekarUser(txtnome.getText())) {
@@ -473,8 +489,17 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
 
+    private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
+                txtcargo.setText("");
+                txtcpd.setText("");
+                txtemail.setText("");
+                txtnome.setText("");
+                txtdata.setText("");
+    }//GEN-LAST:event_BotaoLimparActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotaoLimpar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
