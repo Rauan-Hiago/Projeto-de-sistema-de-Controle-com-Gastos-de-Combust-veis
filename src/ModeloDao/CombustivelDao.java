@@ -3,7 +3,8 @@ package ModeloDao;
 
 import Modelos.Combu;
 import Conexao.Conexao;
-import Modelos.CombustivelModelo;
+import Modelos.Combustivel;
+import Modelos.Veiculos;
 
 
 
@@ -33,7 +34,7 @@ import javax.swing.JOptionPane;
  * @author Rauan Hiago
  */
 public class CombustivelDao {
-    public void create(CombustivelModelo p){
+    public void create(Combustivel p){
          Connection con = Conexao.getConnection();
         
         PreparedStatement stmt = null;
@@ -65,13 +66,13 @@ public class CombustivelDao {
         Conexao.closeConnection(con,stmt);
         }
     }
-    public List<CombustivelModelo> readListCombustivel(){
+    public List<Combustivel> readListCombustivel(){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<CombustivelModelo> combu = new ArrayList<>(); 
+        List<Combustivel> combu = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM combustivel");
@@ -87,7 +88,7 @@ public class CombustivelDao {
              
             
             
-            CombustivelModelo com = new CombustivelModelo();
+            Combustivel com = new Combustivel();
                 
             com.setId(rs.getInt("id"));
             com.setNome(rs.getString("nome"));
@@ -135,13 +136,13 @@ public class CombustivelDao {
           return(retorno);
     
     }
-    public List<CombustivelModelo> read(){
+    public List<Combustivel> read(){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<CombustivelModelo> combu = new ArrayList<>(); 
+        List<Combustivel> combu = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM lancamento");
@@ -157,7 +158,7 @@ public class CombustivelDao {
              
             
             
-            CombustivelModelo com = new CombustivelModelo();
+            Combustivel com = new Combustivel();
                 
             com.setId(rs.getInt("id"));
             com.setNome(rs.getString("nome"));
@@ -182,7 +183,7 @@ public class CombustivelDao {
         return(combu);
     
     }
-     public void atualizar(CombustivelModelo p){
+     public void atualizar(Combustivel p){
     
         Connection con = Conexao.getConnection();
         
@@ -243,7 +244,7 @@ public class CombustivelDao {
         }
     }
      
-     public void deletar(CombustivelModelo p){
+     public void deletar(Combustivel p){
     
         Connection con = Conexao.getConnection();
         
@@ -375,6 +376,54 @@ public class CombustivelDao {
         }finally{
         Conexao.closeConnection(con,stmt);
         }
+    }
+     
+     public List<Combustivel> readbuscaNomeCombustivel(String nome){
+    
+    Connection con = Conexao.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+        
+        List<Combustivel> veic = new ArrayList<>(); 
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM combustivel where nome LIKE ?");
+            stmt.setString(1, nome+"%");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+               SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            
+               String dataFormatada = formatador.format(rs.getDate("datas"));
+             
+               
+            Combustivel combustivel = new Combustivel();
+            
+            combustivel.setId(rs.getInt("id"));
+            
+            
+            
+            combustivel.setNome(rs.getString("nome"));
+            combustivel.setValor(rs.getDouble("preco"));
+            combustivel.setData(dataFormatada);
+           
+           
+           
+            
+            veic.add(combustivel);
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
+        }finally{
+        Conexao.closeConnection(con, stmt, rs);
+        
+        }
+        return(veic);
+    
     }
 
 }

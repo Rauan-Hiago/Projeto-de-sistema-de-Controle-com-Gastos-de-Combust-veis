@@ -6,7 +6,7 @@
 package ModeloDao;
 
 import Conexao.Conexao;
-import Modelos.CombustivelModelo;
+import Modelos.Combustivel;
 import Modelos.Secretaria;
 import Modelos.Usuario;
 import Modelos.Veiculos;
@@ -207,5 +207,51 @@ public class SecretariaDao {
         } finally {
             Conexao.closeConnection(con, stmt);
         }
+    }
+    
+    public List<Secretaria> readbuscaNomeSecretaria(String nome){
+    
+    Connection con = Conexao.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+        
+        List<Secretaria> sec = new ArrayList<>(); 
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM secretaria where nome LIKE ?");
+            stmt.setString(1, nome+"%");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+               
+             
+               
+            Secretaria secretaria = new Secretaria();
+            
+            secretaria.setId(rs.getInt("id"));
+            
+            
+            
+            secretaria.setNome(rs.getString("nome"));
+            secretaria.setAbreviacao(rs.getString("abreviacao"));
+            
+           
+           
+           
+            
+            sec.add(secretaria);
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
+        }finally{
+        Conexao.closeConnection(con, stmt, rs);
+        
+        }
+        return(sec);
+    
     }
 }

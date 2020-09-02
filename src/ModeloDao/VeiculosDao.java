@@ -6,7 +6,7 @@
 package ModeloDao;
 
 import Conexao.Conexao;
-import Modelos.CombustivelModelo;
+import Modelos.Combustivel;
 import Modelos.Usuario;
 
 import Modelos.Veiculos;

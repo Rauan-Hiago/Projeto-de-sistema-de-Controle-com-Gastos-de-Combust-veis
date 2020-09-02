@@ -9,7 +9,7 @@ package Modelos;
  *
  * @author Rauan Hiago
  */
-public class Motoristas {
+public class Motorista {
     private int id;
     private String nome;
     private String cpf;

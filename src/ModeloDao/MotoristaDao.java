@@ -7,8 +7,8 @@ package ModeloDao;
 
 import Conexao.Conexao;
 import Modelos.Combu;
-import Modelos.CombustivelModelo;
-import Modelos.Motoristas;
+import Modelos.Combustivel;
+import Modelos.Motorista;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class MotoristaDao {
 
-    public void create(Motoristas p) {
+    public void create(Motorista p) {
         Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
@@ -52,13 +52,13 @@ public class MotoristaDao {
         }
     }
 
-    public List<Motoristas> readMotoristas() {
+    public List<Motorista> readMotoristas() {
 
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Motoristas> combu = new ArrayList<>();
+        List<Motorista> combu = new ArrayList<>();
 
         try {
             stmt = con.prepareStatement("SELECT * FROM motoristas");
@@ -72,7 +72,7 @@ public class MotoristaDao {
 
                 
 
-                Motoristas com = new Motoristas();
+                Motorista com = new Motorista();
 
                 com.setId(rs.getInt("id"));
                 com.setNome(rs.getString("nome"));
@@ -94,13 +94,13 @@ public class MotoristaDao {
         return (combu);
 
     }
-    public List<Motoristas> readListMotoristas() {
+    public List<Motorista> readListMotoristas() {
 
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Motoristas> combu = new ArrayList<>();
+        List<Motorista> combu = new ArrayList<>();
 
         try {
             stmt = con.prepareStatement("SELECT * FROM motoristas");
@@ -114,7 +114,7 @@ public class MotoristaDao {
 
                 
 
-                Motoristas com = new Motoristas();
+                Motorista com = new Motorista();
 
                 com.setId(rs.getInt("id"));
                 com.setNome(rs.getString("nome"));
@@ -134,7 +134,7 @@ public class MotoristaDao {
 
     }
 
-    public void atualizar(Motoristas p) {
+    public void atualizar(Motorista p) {
 
         Connection con = Conexao.getConnection();
 
@@ -187,7 +187,7 @@ public class MotoristaDao {
         }
     }
 
-    public void deletar(Motoristas p) {
+    public void deletar(Motorista p) {
 
         Connection con = Conexao.getConnection();
 
@@ -207,5 +207,52 @@ public class MotoristaDao {
         } finally {
             Conexao.closeConnection(con, stmt);
         }
+    }
+    
+    public List<Motorista> readbuscaNomeMotorista(String nome){
+    
+    Connection con = Conexao.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+        
+        List<Motorista> veic = new ArrayList<>(); 
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM motoristas where nome LIKE ?");
+            stmt.setString(1, nome+"%");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+               SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            
+               String dataFormatada = formatador.format(rs.getDate("datas"));
+             
+               
+            Motorista motorista = new  Motorista();
+            
+            motorista.setId(rs.getInt("id"));
+            
+            
+            
+            motorista.setNome(rs.getString("nome"));
+            motorista.setCpf(rs.getString("cpf"));
+           
+           
+           
+            
+            veic.add(motorista);
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
+        }finally{
+        Conexao.closeConnection(con, stmt, rs);
+        
+        }
+        return(veic);
+    
     }
 }

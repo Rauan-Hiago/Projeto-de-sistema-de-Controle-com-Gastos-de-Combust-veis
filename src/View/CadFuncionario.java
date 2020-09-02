@@ -7,7 +7,7 @@ package View;
 
 import ModeloDao.CombustivelDao;
 import ModeloDao.UsuarioDao;
-import Modelos.CombustivelModelo;
+import Modelos.Combustivel;
 import Modelos.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

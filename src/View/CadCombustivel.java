@@ -304,6 +304,9 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
             com.setData(txtdata.getText());
             dao.createCombu(com);
             readTabelaCom();
+            txtnome.setText("");
+            txtpreco.setText("");
+            txtdata.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

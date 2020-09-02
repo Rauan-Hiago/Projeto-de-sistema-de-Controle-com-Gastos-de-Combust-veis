@@ -8,7 +8,7 @@ package View;
 import Conexao.Conexao;
 import ModeloDao.CombustivelDao;
 import ModeloDao.SecretariaDao;
-import Modelos.CombustivelModelo;
+import Modelos.Combustivel;
 
 import static View.TelaInicial.jdinterno;
 import java.sql.Connection;
@@ -62,7 +62,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
         
-        for (CombustivelModelo com : cdao.read()) {
+        for (Combustivel com : cdao.read()) {
 
             produtos.addRow(new Object[]{
                 com.getId(),
@@ -486,7 +486,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         } else {
             double mult = 0;
             int num;
-            CombustivelModelo commo = new CombustivelModelo();
+            Combustivel commo = new Combustivel();
             CombustivelDao dao = new CombustivelDao();
 
             mult = dao.valor(txtcom.getText());
@@ -525,7 +525,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         
             if(confirme == JOptionPane.YES_OPTION){
             if (jtcombustiveis.getSelectedRow() != -1) {
-            CombustivelModelo commo = new CombustivelModelo();
+            Combustivel commo = new Combustivel();
             CombustivelDao dao = new CombustivelDao();
 
             commo.setId((int) jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 0));
@@ -564,7 +564,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do motorista!!!!!");
         } else {
             if (jtcombustiveis.getSelectedRow() != -1) {
-                CombustivelModelo commo = new CombustivelModelo();
+                Combustivel commo = new Combustivel();
                 CombustivelDao dao = new CombustivelDao();
 
                 commo.setNome(txtuser.getText());
@@ -642,7 +642,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       ListNomeMotorista list = new ListNomeMotorista();
+       ListMotorista list = new ListMotorista();
          TelaInicial.jdinterno.add(list);
          list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
          list.setVisible(true);

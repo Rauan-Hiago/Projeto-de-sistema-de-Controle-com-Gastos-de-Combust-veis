@@ -5,8 +5,10 @@
  */
 package View;
 
+import ModeloDao.CombustivelDao;
 import ModeloDao.MotoristaDao;
-import Modelos.Motoristas;
+import Modelos.Combustivel;
+import Modelos.Motorista;
 import static View.cadLancamento.txtplaca;
 import static View.cadLancamento.txtuser;
 import javax.swing.ImageIcon;
@@ -16,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rauan Hiago
  */
-public class ListNomeMotorista extends javax.swing.JInternalFrame {
+public class ListMotorista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListNomeMotorista
      */
-    public ListNomeMotorista() {
+    public ListMotorista() {
         initComponents();
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/taxi-driver.png")));
         readTabela();
@@ -39,7 +41,8 @@ public class ListNomeMotorista extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtmotorista = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        txtbuscar = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -61,10 +64,10 @@ public class ListNomeMotorista extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtmotorista);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/zoom.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -72,21 +75,26 @@ public class ListNomeMotorista extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,16 +105,30 @@ public class ListNomeMotorista extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          txtuser.setText(jtmotorista.getValueAt(jtmotorista.getSelectedRow(), 1).toString());
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+     public void readbusca(String nome){
+     DefaultTableModel Motoristas = (DefaultTableModel) jtmotorista.getModel();
+        MotoristaDao cdao = new MotoristaDao();
+
+        Motoristas.setNumRows(0);
+
+        for (Motorista sec : cdao.readbuscaNomeMotorista(nome)) {
+
+            Motoristas.addRow(new Object[]{
+                sec.getId(),
+                sec.getNome(),
+                sec.getCpf(),
+               });
+        }
+ }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        readbusca(txtbuscar.getText());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
  public void readTabela() {
         
@@ -115,7 +137,7 @@ public class ListNomeMotorista extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
         
-        for (Motoristas com : cdao.readListMotoristas()) {
+        for (Motorista com : cdao.readListMotoristas()) {
 
             produtos.addRow(new Object[]{
                 com.getId(),
@@ -125,9 +147,10 @@ public class ListNomeMotorista extends javax.swing.JInternalFrame {
         }
  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtmotorista;
+    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 }
