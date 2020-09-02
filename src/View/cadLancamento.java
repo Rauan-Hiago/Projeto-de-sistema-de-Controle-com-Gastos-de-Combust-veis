@@ -92,8 +92,8 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtcom = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         txtuser = new javax.swing.JTextField();
         txtqtd = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -157,7 +157,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Placa do Carro");
 
-        jLabel3.setText("Quantidade");
+        jLabel3.setText("Quantidade de LT");
 
         jLabel4.setText("Nome do Motorista");
 
@@ -266,7 +266,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtdata))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(jPanel1Layout.createSequentialGroup()

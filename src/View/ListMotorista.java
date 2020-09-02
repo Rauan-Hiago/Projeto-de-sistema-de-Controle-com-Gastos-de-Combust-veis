@@ -43,6 +43,7 @@ public class ListMotorista extends javax.swing.JInternalFrame {
         jtmotorista = new javax.swing.JTable();
         txtbuscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        BotaoAdicionar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -71,6 +72,13 @@ public class ListMotorista extends javax.swing.JInternalFrame {
             }
         });
 
+        BotaoAdicionar.setText("Adicionar");
+        BotaoAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoAdicionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -80,21 +88,25 @@ public class ListMotorista extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jButton2)))
+                        .addGap(225, 225, 225)
+                        .addComponent(BotaoAdicionar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addGap(29, 29, 29)
-                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(44, 44, 44))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BotaoAdicionar)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,6 +142,11 @@ public class ListMotorista extends javax.swing.JInternalFrame {
         readbusca(txtbuscar.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void BotaoAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAdicionarActionPerformed
+        txtuser.setText(jtmotorista.getValueAt(jtmotorista.getSelectedRow(), 1).toString());
+        dispose();
+    }//GEN-LAST:event_BotaoAdicionarActionPerformed
+
  public void readTabela() {
         
         DefaultTableModel produtos = (DefaultTableModel) jtmotorista.getModel();
@@ -147,6 +164,7 @@ public class ListMotorista extends javax.swing.JInternalFrame {
         }
  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotaoAdicionar;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
