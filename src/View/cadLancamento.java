@@ -6,6 +6,7 @@
 package View;
 
 import ModeloDao.CombustivelDao;
+import ModeloDao.LancamentoDao;
 import ModeloDao.SecretariaDao;
 import Modelos.Lancamento;
 import static View.TelaInicial.jdinterno;
@@ -18,43 +19,39 @@ import javax.swing.table.DefaultTableModel;
  * @author Rauan Hiago
  */
 public class cadLancamento extends javax.swing.JInternalFrame {
-    
-    public cadLancamento(String nome){
-     initComponents();
-     String nome1 = nome;
-       txtsec.setText(nome);
-        
+
+    public cadLancamento(String nome) {
+        initComponents();
+        String nome1 = nome;
+        txtsec.setText(nome);
+
         if (txtsec.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");}
-        
+            JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
+        }
+
         readTabela();
     }
- 
-    
- public cadLancamento() {
+
+    public cadLancamento() {
         initComponents();
-        
+
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/check.png")));
         readTabela();
     }
- 
+
     void adicionarsecretaria(String nome) {
-        
+
         txtsec.setText(nome);
-      
-       
     }
 
-   
-
     public void readTabela() {
-        
+
         DefaultTableModel produtos = (DefaultTableModel) jtcombustiveis.getModel();
-        CombustivelDao cdao = new CombustivelDao();
+        LancamentoDao dao = new LancamentoDao();
 
         produtos.setNumRows(0);
-        
-        for (Lancamento com : cdao.read()) {
+
+        for (Lancamento com : dao.read()) {
 
             produtos.addRow(new Object[]{
                 com.getId(),
@@ -64,7 +61,6 @@ public class cadLancamento extends javax.swing.JInternalFrame {
                 com.getQtd(),
                 com.getSecretaria(),
                 com.getData()
-
             });
         }
     }
@@ -105,7 +101,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         jtcombustiveis = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
 
@@ -375,17 +371,17 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("Editar");
-        jButton3.setPreferredSize(new java.awt.Dimension(71, 50));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBEditar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBEditar.setText("Editar");
+        jBEditar.setPreferredSize(new java.awt.Dimension(71, 50));
+        jBEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton3MouseEntered(evt);
+                jBEditarMouseEntered(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBEditarActionPerformed(evt);
             }
         });
 
@@ -422,7 +418,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7))
@@ -432,7 +428,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -462,7 +458,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         SecretariaDao daosec = new SecretariaDao();
-      
+
         if (txtplaca.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
         } else if (txtcom.getText().trim().isEmpty()) {
@@ -473,13 +469,13 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
         } else if (txtuser.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do motorista!!!!!");
-        } else if(daosec.checarSecretaria(txtsec.getText())==false){
-        JOptionPane.showMessageDialog(null, "Não existe a secretaria Cadastrada!!!!!!!!!");
+        } else if (daosec.checarSecretaria(txtsec.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Não existe a secretaria Cadastrada!!!!!!!!!");
         } else {
             double mult = 0;
             int num;
             Lancamento commo = new Lancamento();
-            CombustivelDao dao = new CombustivelDao();
+            LancamentoDao dao = new LancamentoDao();
 
             mult = dao.valor(txtcom.getText());
 
@@ -494,8 +490,8 @@ public class cadLancamento extends javax.swing.JInternalFrame {
                 commo.setValor(num * mult);
                 commo.setData(txtdata.getText());
 
-                
                 dao.create(commo);
+
                 txtcom.setText("");
                 txtplaca.setText("");
                 txtqtd.setText("");
@@ -507,67 +503,22 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Não esxite o combustível nos cadastros!!");
             }
-
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
-        
-            if(confirme == JOptionPane.YES_OPTION){
-            if (jtcombustiveis.getSelectedRow() != -1) {
-            Lancamento commo = new Lancamento();
-            CombustivelDao dao = new CombustivelDao();
 
-            commo.setId((int) jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 0));
-            dao.deletar(commo);
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
 
-            txtcom.setText("");
-            txtplaca.setText("");
-            txtqtd.setText("");
-            txtuser.setText("");
-            txtsec.setText("");
-            txtdata.setText("");
-
-            readTabela();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
-        }
-            }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
-                }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar estes dados?", title, JOptionPane.YES_NO_OPTION);
-        
-            if(confirme == JOptionPane.YES_OPTION){
-        if (txtplaca.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
-        } else if (txtcom.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
-        } else if (txtqtd.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Quantidade!!!!!");
-        } else if (txtsec.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
-        } else if (txtuser.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do motorista!!!!!");
-        } else {
+        if (confirme == JOptionPane.YES_OPTION) {
             if (jtcombustiveis.getSelectedRow() != -1) {
                 Lancamento commo = new Lancamento();
-                CombustivelDao dao = new CombustivelDao();
 
-                commo.setNome(txtuser.getText());
-                commo.setPlaca(txtplaca.getText());
-                commo.setQtd(Integer.parseInt(txtqtd.getText()));
-                commo.setTipo(txtcom.getText());
-                commo.setSecretaria(txtsec.getText());
-                commo.setData(txtdata.getText());
+                LancamentoDao dao = new LancamentoDao();
 
                 commo.setId((int) jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 0));
-                dao.atualizar(commo);
+
+                dao.deletar(commo);
 
                 txtcom.setText("");
                 txtplaca.setText("");
@@ -577,15 +528,62 @@ public class cadLancamento extends javax.swing.JInternalFrame {
                 txtdata.setText("");
 
                 readTabela();
-            }else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
-            
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
             }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
         }
-            }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar estes dados?", title, JOptionPane.YES_NO_OPTION);
+
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (txtplaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
+            } else if (txtcom.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
+            } else if (txtqtd.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Quantidade!!!!!");
+            } else if (txtsec.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
+            } else if (txtuser.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do motorista!!!!!");
+            } else {
+                if (jtcombustiveis.getSelectedRow() != -1) {
+
+                    Lancamento commo = new Lancamento();
+
+                    LancamentoDao dao = new LancamentoDao();
+
+                    commo.setNome(txtuser.getText());
+                    commo.setPlaca(txtplaca.getText());
+                    commo.setQtd(Integer.parseInt(txtqtd.getText()));
+                    commo.setTipo(txtcom.getText());
+                    commo.setSecretaria(txtsec.getText());
+                    commo.setData(txtdata.getText());
+                    commo.setId((int) jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 0));
+
+                    dao.atualizar(commo);
+
+                    txtcom.setText("");
+                    txtplaca.setText("");
+                    txtqtd.setText("");
+                    txtuser.setText("");
+                    txtsec.setText("");
+                    txtdata.setText("");
+
+                    readTabela();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
                 }
-    }//GEN-LAST:event_jButton3ActionPerformed
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+        }
+    }//GEN-LAST:event_jBEditarActionPerformed
 
     private void jtcombustiveisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtcombustiveisKeyReleased
 
@@ -612,32 +610,32 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtcombustiveisMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         ListCombustivel list = new ListCombustivel();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
+        ListCombustivel list = new ListCombustivel();
+        TelaInicial.jdinterno.add(list);
+        list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+        list.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         ListSecretaria list = new ListSecretaria();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-        
+        ListSecretaria list = new ListSecretaria();
+        TelaInicial.jdinterno.add(list);
+        list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+        list.setVisible(true);
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         ListPlaca list = new ListPlaca();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
+        TelaInicial.jdinterno.add(list);
+        list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+        list.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       ListMotorista list = new ListMotorista();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
+        ListMotorista list = new ListMotorista();
+        TelaInicial.jdinterno.add(list);
+        list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+        list.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -645,69 +643,68 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jbmaisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbmaisMouseEntered
-       jbmais.setToolTipText("Escolha na lista acima a tela que você deseja abrir, e aperte neste botão!");
+        jbmais.setToolTipText("Escolha na lista acima a tela que você deseja abrir, e aperte neste botão!");
     }//GEN-LAST:event_jbmaisMouseEntered
 
     private void jbmaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmaisActionPerformed
-      String combo = (String) jComboBox1.getSelectedItem();
-       if(combo == "Gerenciar Secretaria"){
-         CadSecretaria list = new CadSecretaria();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-       }else if(combo =="Gerenciar Veículos"){
-       CadVeiculo list = new CadVeiculo();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-       
-       }else if(combo =="Gerenciar Motoristas"){
-       CadMotorista list = new CadMotorista();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-       
-       }else if(combo == "Gerenciar usuários"){
-       CadFuncionario list = new CadFuncionario();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-       
-       }else if(combo == "Gerenciar Combustíveis"){
-       CadCombustivel list = new CadCombustivel();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-       
-       }
+        String combo = (String) jComboBox1.getSelectedItem();
+        if (combo == "Gerenciar Secretaria") {
+            CadSecretaria list = new CadSecretaria();
+            TelaInicial.jdinterno.add(list);
+            list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+            list.setVisible(true);
+        } else if (combo == "Gerenciar Veículos") {
+            CadVeiculo list = new CadVeiculo();
+            TelaInicial.jdinterno.add(list);
+            list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+            list.setVisible(true);
+            
+        } else if (combo == "Gerenciar Motoristas") {
+            CadMotorista list = new CadMotorista();
+            TelaInicial.jdinterno.add(list);
+            list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+            list.setVisible(true);
+
+        } else if (combo == "Gerenciar usuários") {
+            CadFuncionario list = new CadFuncionario();
+            TelaInicial.jdinterno.add(list);
+            list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+            list.setVisible(true);
+
+        } else if (combo == "Gerenciar Combustíveis") {
+            CadCombustivel list = new CadCombustivel();
+            TelaInicial.jdinterno.add(list);
+            list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+            list.setVisible(true);
+        }
     }//GEN-LAST:event_jbmaisActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-       jButton1.setToolTipText("Cadastrar Lançamento!");
+        jButton1.setToolTipText("Cadastrar Lançamento!");
     }//GEN-LAST:event_jButton1MouseEntered
 
-    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        jButton3.setToolTipText("Editar Lançamento!");
-    }//GEN-LAST:event_jButton3MouseEntered
+    private void jBEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditarMouseEntered
+        jBEditar.setToolTipText("Editar Lançamento!");
+    }//GEN-LAST:event_jBEditarMouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         jButton2.setToolTipText("Excluir Lançamento!");
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-                txtcom.setText("");
-                txtplaca.setText("");
-                txtqtd.setText("");
-                txtuser.setText("");
-                txtsec.setText("");
-                txtdata.setText("");
+        txtcom.setText("");
+        txtplaca.setText("");
+        txtqtd.setText("");
+        txtuser.setText("");
+        txtsec.setText("");
+        txtdata.setText("");
     }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBEditar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

@@ -5,7 +5,7 @@
  */
 package View;
 
-import Modelos.Combu;
+import Modelos.Combustivel;
 import ModeloDao.CombustivelDao;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -32,7 +32,7 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
 
-        for (Combu com : cdao.readCom()) {
+        for (Combustivel com : cdao.readCom()) {
 
             produtos.addRow(new Object[]{
                 com.getId(),
@@ -294,7 +294,7 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
 
         } else {
             CombustivelDao dao = new CombustivelDao();
-            Combu com = new Combu();
+            Combustivel com = new Combustivel();
 
             com.setNome(txtnome.getText());
 
@@ -329,7 +329,7 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
         
          if(confirme == JOptionPane.YES_OPTION){ 
         if (jtcom.getSelectedRow() != -1) {
-            Combu commo = new Combu();
+            Combustivel commo = new Combustivel();
             CombustivelDao dao = new CombustivelDao();
 
             commo.setNome(txtnome.getText());
@@ -356,7 +356,7 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
          int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
         if(confirme == JOptionPane.YES_OPTION){ 
             if (jtcom.getSelectedRow() != -1) {
-            Combu commo = new Combu();
+            Combustivel commo = new Combustivel();
             CombustivelDao dao = new CombustivelDao();
 
             commo.setId((int) jtcom.getValueAt(jtcom.getSelectedRow(), 0));

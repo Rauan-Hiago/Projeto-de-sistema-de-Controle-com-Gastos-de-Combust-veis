@@ -6,7 +6,7 @@
 package ModeloDao;
 
 import Conexao.Conexao;
-import Modelos.Combu;
+import Modelos.Combustivel;
 import Modelos.Motorista;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -164,7 +164,7 @@ public class MotoristaDao {
         }
     }
 
-    public void deletarCombustivel(Combu p) {
+    public void deletarCombustivel(Combustivel p) {
 
         Connection con = Conexao.getConnection();
 

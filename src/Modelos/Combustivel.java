@@ -9,7 +9,7 @@ package Modelos;
  *
  * @author Rauan Hiago
  */
-public class Combu {
+public class Combustivel {
     private String nome;
     private double preco;
     private int id;
