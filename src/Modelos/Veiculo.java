@@ -9,7 +9,7 @@ package Modelos;
  *
  * @author Rauan Hiago
  */
-public class Veiculos {
+public class Veiculo {
     private int id;
     private String placa;
     private String Cor;

@@ -5,15 +5,9 @@
  */
 package View;
 
-import ModeloDao.CombustivelDao;
+
 import ModeloDao.MotoristaDao;
-import ModeloDao.SecretariaDao;
-import Modelos.Combustivel;
 import Modelos.Motorista;
-import static View.cadLancamento.txtcom;
-import static View.cadLancamento.txtplaca;
-import static View.cadLancamento.txtsec;
-import static View.cadLancamento.txtuser;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

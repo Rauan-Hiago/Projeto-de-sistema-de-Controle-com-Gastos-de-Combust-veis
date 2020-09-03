@@ -7,7 +7,6 @@ package ModeloDao;
 
 import Conexao.Conexao;
 import Modelos.Combu;
-import Modelos.Combustivel;
 import Modelos.Motorista;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

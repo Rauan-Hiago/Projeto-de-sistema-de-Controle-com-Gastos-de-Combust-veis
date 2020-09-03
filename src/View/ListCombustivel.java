@@ -6,11 +6,8 @@
 package View;
 
 import ModeloDao.CombustivelDao;
-import ModeloDao.VeiculosDao;
 import Modelos.Combustivel;
-import Modelos.Veiculos;
 import static View.cadLancamento.txtcom;
-import static View.cadLancamento.txtsec;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 

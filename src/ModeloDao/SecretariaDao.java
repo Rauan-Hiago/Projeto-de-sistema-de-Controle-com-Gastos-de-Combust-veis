@@ -6,10 +6,7 @@
 package ModeloDao;
 
 import Conexao.Conexao;
-import Modelos.Combustivel;
 import Modelos.Secretaria;
-import Modelos.Usuario;
-import Modelos.Veiculos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

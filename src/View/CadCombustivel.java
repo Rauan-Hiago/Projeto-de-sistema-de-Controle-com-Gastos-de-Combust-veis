@@ -7,8 +7,6 @@ package View;
 
 import Modelos.Combu;
 import ModeloDao.CombustivelDao;
-import ModeloDao.UsuarioDao;
-import Modelos.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

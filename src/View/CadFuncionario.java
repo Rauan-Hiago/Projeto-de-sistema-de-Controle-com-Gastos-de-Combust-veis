@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
-import ModeloDao.CombustivelDao;
 import ModeloDao.UsuarioDao;
-import Modelos.Combustivel;
 import Modelos.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

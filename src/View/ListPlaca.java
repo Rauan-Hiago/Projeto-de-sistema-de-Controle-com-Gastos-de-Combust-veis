@@ -5,13 +5,9 @@
  */
 package View;
 
-import ModeloDao.SecretariaDao;
 import ModeloDao.VeiculosDao;
-import Modelos.Secretaria;
-import Modelos.Veiculos;
-import static View.cadLancamento.txtcom;
+import Modelos.Veiculo;
 import static View.cadLancamento.txtplaca;
-import static View.cadLancamento.txtsec;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,7 +31,7 @@ public class ListPlaca extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
 
-        for (Veiculos sec : cdao.readListaVeiculos()) {
+        for (Veiculo sec : cdao.readListaVeiculos()) {
 
             produtos.addRow(new Object[]{
                 sec.getId(),
@@ -50,7 +46,7 @@ public class ListPlaca extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
 
-        for (Veiculos sec : cdao.readbuscaPlacas(nome)) {
+        for (Veiculo sec : cdao.readbuscaPlacas(nome)) {
 
             produtos.addRow(new Object[]{
                 sec.getId(),

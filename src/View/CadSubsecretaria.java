@@ -5,7 +5,6 @@
  */
 package View;
 
-import ModeloDao.SecretariaDao;
 import ModeloDao.SubSecretariaDao;
 import Modelos.Secretaria;
 

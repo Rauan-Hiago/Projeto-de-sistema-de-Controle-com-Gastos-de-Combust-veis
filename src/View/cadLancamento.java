@@ -5,21 +5,13 @@
  */
 package View;
 
-import Conexao.Conexao;
 import ModeloDao.CombustivelDao;
 import ModeloDao.SecretariaDao;
 import Modelos.Combustivel;
-
 import static View.TelaInicial.jdinterno;
-import java.sql.Connection;
 import javax.swing.ImageIcon;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *

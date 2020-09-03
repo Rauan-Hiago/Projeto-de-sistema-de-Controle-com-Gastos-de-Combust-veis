@@ -6,10 +6,7 @@
 package ModeloDao;
 
 import Conexao.Conexao;
-import Modelos.Combustivel;
-import Modelos.Usuario;
-
-import Modelos.Veiculos;
+import Modelos.Veiculo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class VeiculosDao {
     
-    public void deletar(Veiculos veic){
+    public void deletar(Veiculo veic){
     
         Connection con = Conexao.getConnection();
         
@@ -49,7 +46,7 @@ public class VeiculosDao {
         }
     }
     
-    public void atualizar(Veiculos veiculo){
+    public void atualizar(Veiculo veiculo){
     
         Connection con = Conexao.getConnection();
         
@@ -85,13 +82,13 @@ public class VeiculosDao {
         Conexao.closeConnection(con,stmt);
         }
     }
-    public List<Veiculos> read(){
+    public List<Veiculo> read(){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
-        List<Veiculos> veic = new ArrayList<>(); 
+        List<Veiculo> veic = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM veiculo");
@@ -105,7 +102,7 @@ public class VeiculosDao {
              
               
                
-            Veiculos veiculo = new Veiculos();
+            Veiculo veiculo = new Veiculo();
             
             veiculo.setId(rs.getInt("id"));
             veiculo.setCor(rs.getString("cor"));
@@ -131,13 +128,13 @@ public class VeiculosDao {
         return(veic);
     
     }
-    public List<Veiculos> readListaVeiculos(){
+    public List<Veiculo> readListaVeiculos(){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
-        List<Veiculos> veic = new ArrayList<>(); 
+        List<Veiculo> veic = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM veiculo");
@@ -151,7 +148,7 @@ public class VeiculosDao {
              
               
                
-            Veiculos veiculo = new Veiculos();
+            Veiculo veiculo = new Veiculo();
             
             veiculo.setId(rs.getInt("id"));
             
@@ -177,13 +174,13 @@ public class VeiculosDao {
         return(veic);
     
     }
-    public List<Veiculos> readbuscaPlacas(String nome){
+    public List<Veiculo> readbuscaPlacas(String nome){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
-        List<Veiculos> veic = new ArrayList<>(); 
+        List<Veiculo> veic = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM veiculo where modelo LIKE ?");
@@ -198,7 +195,7 @@ public class VeiculosDao {
              
               
                
-            Veiculos veiculo = new Veiculos();
+            Veiculo veiculo = new Veiculo();
             
             veiculo.setId(rs.getInt("id"));
             
@@ -227,7 +224,7 @@ public class VeiculosDao {
     
     
     
-    public void create(Veiculos p){
+    public void create(Veiculo p){
     
         Connection con = Conexao.getConnection();
         

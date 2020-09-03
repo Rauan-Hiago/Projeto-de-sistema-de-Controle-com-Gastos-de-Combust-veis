@@ -6,7 +6,6 @@
 package View;
 
 import ModeloDao.UsuarioDao;
-import Modelos.Usuario;
 import javax.swing.JOptionPane;
 
 /**

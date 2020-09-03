@@ -5,9 +5,7 @@
  */
 package View;
 
-import ModeloDao.CombustivelDao;
 import ModeloDao.SecretariaDao;
-import Modelos.Combustivel;
 import Modelos.Secretaria;
 import static View.TelaInicial.jdinterno;
 import javax.swing.ImageIcon;
