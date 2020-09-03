@@ -25,13 +25,14 @@ public class ListCombustivel extends javax.swing.JInternalFrame {
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/gas-station.png")));
         readTabela();
     }
-     public void readTabela() {
-        
+
+    public void readTabela() {
+
         DefaultTableModel produtos = (DefaultTableModel) jtcombustiveis.getModel();
         CombustivelDao cdao = new CombustivelDao();
 
         produtos.setNumRows(0);
-        
+
         for (Lancamento com : cdao.readListCombustivel()) {
 
             produtos.addRow(new Object[]{
@@ -136,25 +137,25 @@ public class ListCombustivel extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void readbusca(String nome){
-     DefaultTableModel combustiveis = (DefaultTableModel) jtcombustiveis.getModel();
+    public void readbusca(String nome) {
+        
+        DefaultTableModel combustiveis = (DefaultTableModel) jtcombustiveis.getModel();
+        
         CombustivelDao cdao = new CombustivelDao();
 
         combustiveis.setNumRows(0);
 
         for (Lancamento sec : cdao.readbuscaNomeCombustivel(nome)) {
-
             combustiveis.addRow(new Object[]{
                 sec.getId(),
                 sec.getNome(),
                 sec.getValor(),
-                sec.getData(),
-               });
+                sec.getData(),});
         }
- }
-    
+    }
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      readbusca(txtbuscar.getText());
+        readbusca(txtbuscar.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

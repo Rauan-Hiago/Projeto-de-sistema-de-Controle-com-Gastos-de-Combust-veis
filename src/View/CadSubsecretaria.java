@@ -201,25 +201,19 @@ public class CadSubsecretaria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CampoNomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        
-        
+
         Secretaria sec = new Secretaria();
         SubSecretariaDao dao = new SubSecretariaDao();
-        
-        
+
         sec.setData(CampoData.getText());
         sec.setNome(CampoNome.getText());
         sec.setAbreviacao(CampoAbreviacao.getText());
-        
+
         dao.create(sec);
-        
+
         CampoData.setText("");
         CampoNome.setText("");
-        
-    
-    
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed

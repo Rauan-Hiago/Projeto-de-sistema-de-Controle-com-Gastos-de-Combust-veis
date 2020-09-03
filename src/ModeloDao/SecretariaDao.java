@@ -37,6 +37,7 @@ public class SecretariaDao {
             String datamysql = ano + "-" + mes + "-" + dia;
 
             stmt = con.prepareStatement("UPDATE secretaria SET abreviacao = ?, nome = ?, datas = ? where id = ?");
+
             stmt.setString(1, sec.getAbreviacao());
             stmt.setString(2, sec.getNome());
             stmt.setString(3, datamysql);
@@ -47,7 +48,6 @@ public class SecretariaDao {
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -69,7 +69,6 @@ public class SecretariaDao {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!!!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -90,10 +89,7 @@ public class SecretariaDao {
 
             while (rs.next()) {
                 SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-
                 String dataFormatada = formatador.format(rs.getDate("datas"));
-
-               
 
                 Secretaria secre = new Secretaria();
 
@@ -103,20 +99,19 @@ public class SecretariaDao {
                 secre.setData(dataFormatada);
 
                 sec.add(secre);
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return (sec);
-
     }
 
     public boolean checarSecretaria(String sec) {
+        
         boolean retorno = false;
 
         Connection con = Conexao.getConnection();
@@ -134,6 +129,7 @@ public class SecretariaDao {
         } catch (SQLException ex) {
             Logger.getLogger(CombustivelDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return (retorno);
     }
 
@@ -151,10 +147,8 @@ public class SecretariaDao {
 
             while (rs.next()) {
                 SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-
                 String dataFormatada = formatador.format(rs.getDate("datas"));
 
-                
                 Secretaria secre = new Secretaria();
 
                 secre.setId(rs.getInt("id"));
@@ -163,17 +157,15 @@ public class SecretariaDao {
                 secre.setData(dataFormatada);
 
                 sec.add(secre);
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return (sec);
-
     }
 
     public void create(Secretaria sec) {
@@ -190,6 +182,7 @@ public class SecretariaDao {
             String datamysql = ano + "-" + mes + "-" + dia;
 
             stmt = con.prepareStatement("INSERT INTO secretaria (nome,abreviacao,datas) values(?,?,?)");
+            
             stmt.setString(1, sec.getNome());
             stmt.setString(2, sec.getAbreviacao());
             stmt.setString(3, datamysql);
@@ -199,56 +192,42 @@ public class SecretariaDao {
             JOptionPane.showMessageDialog(null, "Secretaria salva com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
         }
     }
-    
-    public List<Secretaria> readbuscaNomeSecretaria(String nome){
-    
-    Connection con = Conexao.getConnection();
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-        
-        List<Secretaria> sec = new ArrayList<>(); 
-        
+
+    public List<Secretaria> readbuscaNomeSecretaria(String nome) {
+
+        Connection con = Conexao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Secretaria> sec = new ArrayList<>();
+
         try {
             stmt = con.prepareStatement("SELECT * FROM secretaria where nome LIKE ?");
-            stmt.setString(1, nome+"%");
+            stmt.setString(1, nome + "%");
             rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                
-               
-             
-               
-            Secretaria secretaria = new Secretaria();
-            
-            secretaria.setId(rs.getInt("id"));
-            
-            
-            
-            secretaria.setNome(rs.getString("nome"));
-            secretaria.setAbreviacao(rs.getString("abreviacao"));
-            
-           
-           
-           
-            
-            sec.add(secretaria);
-            
+
+            while (rs.next()) {
+
+                Secretaria secretaria = new Secretaria();
+
+                secretaria.setId(rs.getInt("id"));
+                secretaria.setNome(rs.getString("nome"));
+                secretaria.setAbreviacao(rs.getString("abreviacao"));
+
+                sec.add(secretaria);
             }
-            
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
-        }finally{
-        Conexao.closeConnection(con, stmt, rs);
-        
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
+        } finally {
+            Conexao.closeConnection(con, stmt, rs);
         }
-        return(sec);
-    
+        
+        return (sec);
     }
 }

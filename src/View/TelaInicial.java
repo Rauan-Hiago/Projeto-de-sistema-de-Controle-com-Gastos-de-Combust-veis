@@ -5,8 +5,6 @@
  */
 package View;
 
-
-
 import java.awt.Image;
 import Conexao.Conexao;
 import java.awt.Toolkit;
@@ -17,7 +15,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
-
 /**
  *
  * @author Rauan Hiago
@@ -25,19 +22,24 @@ import net.sf.jasperreports.view.JasperViewer;
 public class TelaInicial extends javax.swing.JFrame {
 
     Connection con = null;
+
     /**
      * Creates new form TelaInicial
      */
     public TelaInicial() {
         initComponents();
+
         con = Conexao.getConnection();
-        
+
         Toolkit kit = getDefaultToolkit();
+
         Image icone = kit.getImage("");
+
         this.setIconImage(icone);
         this.setLocationRelativeTo(null);
+
         setExtendedState(MAXIMIZED_BOTH);
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,25 +279,21 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         CadCombustivel com = new CadCombustivel();
         jdinterno.add(com);
-        com.setLocation(jdinterno.getWidth()/2 - com.getWidth()/2, jdinterno.getHeight()/2 - com.getHeight()/2);
-       
+        com.setLocation(jdinterno.getWidth() / 2 - com.getWidth() / 2, jdinterno.getHeight() / 2 - com.getHeight() / 2);
         com.setVisible(true);
-
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         cadLancamento lan = new cadLancamento();
         jdinterno.add(lan);
-        lan.setLocation(jdinterno.getWidth()/2 - lan.getWidth()/2, jdinterno.getHeight()/2 - lan.getHeight()/2);
+        lan.setLocation(jdinterno.getWidth() / 2 - lan.getWidth() / 2, jdinterno.getHeight() / 2 - lan.getHeight() / 2);
         lan.setVisible(true);
-
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem2MenuDragMouseDragged(javax.swing.event.MenuDragMouseEvent evt) {//GEN-FIRST:event_jMenuItem2MenuDragMouseDragged
@@ -305,125 +303,113 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         CadFuncionario cad = new CadFuncionario();
         jdinterno.add(cad);
-        cad.setLocation(jdinterno.getWidth()/2 - cad.getWidth()/2, jdinterno.getHeight()/2 - cad.getHeight()/2);
+        cad.setLocation(jdinterno.getWidth() / 2 - cad.getWidth() / 2, jdinterno.getHeight() / 2 - cad.getHeight() / 2);
         cad.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         CadSecretaria sec = new CadSecretaria();
         jdinterno.add(sec);
-        sec.setLocation(jdinterno.getWidth()/2 - sec.getWidth()/2, jdinterno.getHeight()/2 - sec.getHeight()/2);
+        sec.setLocation(jdinterno.getWidth() / 2 - sec.getWidth() / 2, jdinterno.getHeight() / 2 - sec.getHeight() / 2);
         sec.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         CadVeiculo veiculo = new CadVeiculo();
         jdinterno.add(veiculo);
-        veiculo.setLocation(jdinterno.getWidth()/2 - veiculo.getWidth()/2, jdinterno.getHeight()/2 - veiculo.getHeight()/2);
+        veiculo.setLocation(jdinterno.getWidth() / 2 - veiculo.getWidth() / 2, jdinterno.getHeight() / 2 - veiculo.getHeight() / 2);
         veiculo.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void relatoriolancamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriolancamentosActionPerformed
-        
+
         int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
-       
-        if(confirma == JOptionPane.YES_OPTION){
-            
+
+        if (confirma == JOptionPane.YES_OPTION) {
+
             try {
                 JasperPrint print = JasperFillManager.fillReport("relatorios/lancamentos.jasper", null, con);
-                 JasperViewer.viewReport(print, false);
+                JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        
-        
         }
     }//GEN-LAST:event_relatoriolancamentosActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-      CadMotorista veiculo = new CadMotorista();
+        CadMotorista veiculo = new CadMotorista();
         jdinterno.add(veiculo);
-        veiculo.setLocation(jdinterno.getWidth()/2 - veiculo.getWidth()/2, jdinterno.getHeight()/2 - veiculo.getHeight()/2);
+        veiculo.setLocation(jdinterno.getWidth() / 2 - veiculo.getWidth() / 2, jdinterno.getHeight() / 2 - veiculo.getHeight() / 2);
         veiculo.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void relatorioveiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioveiculoActionPerformed
-int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
-       
-        if(confirma == JOptionPane.YES_OPTION){
-            
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+
             try {
                 JasperPrint print = JasperFillManager.fillReport("relatorios/veiculos.jasper", null, con);
-                 JasperViewer.viewReport(print, false);
+                JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        
-        
         }        // TODO add your handling code here:
     }//GEN-LAST:event_relatorioveiculoActionPerformed
 
     private void relatoriomotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriomotoristaActionPerformed
-      int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
-       
-        if(confirma == JOptionPane.YES_OPTION){
-            
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+
             try {
                 JasperPrint print = JasperFillManager.fillReport("relatorios/motoristas.jasper", null, con);
-                 JasperViewer.viewReport(print, false);
+                JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        
-        
         }
     }//GEN-LAST:event_relatoriomotoristaActionPerformed
 
     private void relatoriosecretariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriosecretariaActionPerformed
-int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
-       
-        if(confirma == JOptionPane.YES_OPTION){
-            
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+
             try {
                 JasperPrint print = JasperFillManager.fillReport("Relatorios/Secretarias.jasper", null, con);
-                 JasperViewer.viewReport(print, false);
+                JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        
-        
         }        // TODO add your handling code here:
     }//GEN-LAST:event_relatoriosecretariaActionPerformed
 
     private void relatoriocombustiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriocombustiveisActionPerformed
-int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
-       
-        if(confirma == JOptionPane.YES_OPTION){
-            
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+
             try {
                 JasperPrint print = JasperFillManager.fillReport("relatorios/combustíveis.jasper", null, con);
-                 JasperViewer.viewReport(print, false);
+                JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        
-        
         }        // TODO add your handling code here:
     }//GEN-LAST:event_relatoriocombustiveisActionPerformed
 
     private void relatoriousuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriousuariosActionPerformed
-int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
-       
-        if(confirma == JOptionPane.YES_OPTION){
-            
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+
             try {
                 JasperPrint print = JasperFillManager.fillReport("Relatorios/usuarios.jasper", null, con);
-                 JasperViewer.viewReport(print, false);
+                JasperViewer.viewReport(print, false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        
-        
         }        // TODO add your handling code here:
     }//GEN-LAST:event_relatoriousuariosActionPerformed
 
@@ -488,5 +474,4 @@ int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste 
     private javax.swing.JMenuItem relatorioveiculo;
     // End of variables declaration//GEN-END:variables
 
-    
 }

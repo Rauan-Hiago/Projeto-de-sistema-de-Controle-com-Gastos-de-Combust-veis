@@ -105,11 +105,12 @@ public class TelaLogin extends javax.swing.JFrame {
             TelaInicial tela = new TelaInicial();
 
             tela.setVisible(true);
+
             this.dispose();
+
         } else {
             JOptionPane.showMessageDialog(null, "erro ao entrar!!!");
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

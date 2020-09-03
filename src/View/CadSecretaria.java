@@ -359,81 +359,88 @@ public class CadSecretaria extends javax.swing.JInternalFrame {
                 sec.getNome(),
                 sec.getAbreviacao(),
                 sec.getData()
-
             });
         }
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Secretaria sec = new Secretaria();
-        SecretariaDao dao = new SecretariaDao();
         
+        Secretaria sec = new Secretaria();
+        
+        SecretariaDao dao = new SecretariaDao();
+
         sec.setAbreviacao(txtabreviacao.getText());
         sec.setData(txtdata.getText());
         sec.setNome(txtnome.getText());
-        
+
         dao.create(sec);
+        
         readtable();
 
         txtabreviacao.setText("");
         txtnome.setText("");
         txtdata.setText("");
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
-        
-         if(confirme == JOptionPane.YES_OPTION){ 
-        if (txtabreviacao.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
-        } else if (txtdata.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
-        } else if (txtnome.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
-        } else {
-            if (jtsecretaria.getSelectedRow() != -1) {
-                Secretaria sec = new Secretaria();
-                SecretariaDao dao = new SecretariaDao();
 
-                sec.setNome(txtnome.getText());
-                sec.setData(txtdata.getText());
-                sec.setAbreviacao(txtabreviacao.getText());
-                sec.setId((int) jtsecretaria.getValueAt(jtsecretaria.getSelectedRow(), 0));
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (txtabreviacao.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
+            } else if (txtdata.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
+            } else if (txtnome.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
+            } else {
+                if (jtsecretaria.getSelectedRow() != -1) {
+                    Secretaria sec = new Secretaria();
+                    
+                    SecretariaDao dao = new SecretariaDao();
 
-                dao.atualizar(sec);
-                readtable();
-            }else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
-        }
-       }
-         }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+                    sec.setNome(txtnome.getText());
+                    sec.setData(txtdata.getText());
+                    sec.setAbreviacao(txtabreviacao.getText());
+                    sec.setId((int) jtsecretaria.getValueAt(jtsecretaria.getSelectedRow(), 0));
+
+                    dao.atualizar(sec);
+                    
+                    readtable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
                 }
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-             int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
         
-             if(confirme == JOptionPane.YES_OPTION){        
-                 if (jtsecretaria.getSelectedRow() != -1) {
-            Secretaria sec = new Secretaria();
-            SecretariaDao dao = new SecretariaDao();
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
 
-            sec.setId((int) jtsecretaria.getValueAt(jtsecretaria.getSelectedRow(), 0));
-            dao.deletar(sec);
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (jtsecretaria.getSelectedRow() != -1) {
+                Secretaria sec = new Secretaria();
+                
+                SecretariaDao dao = new SecretariaDao();
 
-            txtabreviacao.setText("");
-            txtdata.setText("");
-            txtnome.setText("");
+                sec.setId((int) jtsecretaria.getValueAt(jtsecretaria.getSelectedRow(), 0));
+                
+                dao.deletar(sec);
 
-            readtable();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
+                txtabreviacao.setText("");
+                txtdata.setText("");
+                txtnome.setText("");
+
+                readtable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
         }
-             } else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
-                }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jtsecretariaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtsecretariaKeyReleased
@@ -453,11 +460,11 @@ public class CadSecretaria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtsecretariaMouseClicked
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-       jButton1.setToolTipText("Cadastsar Secretaria!");
+        jButton1.setToolTipText("Cadastsar Secretaria!");
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-jButton2.setToolTipText("Editar Secretaria!");        // TODO add your handling code here:
+        jButton2.setToolTipText("Editar Secretaria!");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
@@ -465,20 +472,16 @@ jButton2.setToolTipText("Editar Secretaria!");        // TODO add your handling 
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void botaosubsecretariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosubsecretariaActionPerformed
-
-        
-        
         CadSubsecretaria list = new CadSubsecretaria();
-         TelaInicial.jdinterno.add(list);
-         list.setLocation(jdinterno.getWidth()/2 - list.getWidth()/2, jdinterno.getHeight()/2 - list.getHeight()/2);
-         list.setVisible(true);
-     
+        TelaInicial.jdinterno.add(list);
+        list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
+        list.setVisible(true);
     }//GEN-LAST:event_botaosubsecretariaActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
         txtabreviacao.setText("");
-            txtdata.setText("");
-            txtnome.setText("");
+        txtdata.setText("");
+        txtnome.setText("");
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
 

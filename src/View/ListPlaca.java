@@ -21,40 +21,43 @@ public class ListPlaca extends javax.swing.JInternalFrame {
      * Creates new form ListPlaca
      */
     public ListPlaca() {
-        initComponents();
-        setFrameIcon(new ImageIcon(this.getClass().getResource("")));
+        
+        initComponents();      
+        setFrameIcon(new ImageIcon(this.getClass().getResource("")));     
         read();
     }
-    public void read(){
-     DefaultTableModel produtos = (DefaultTableModel) jtplaca.getModel();
+
+    public void read() {
+        
+        DefaultTableModel produtos = (DefaultTableModel) jtplaca.getModel();
+        
         VeiculoDao cdao = new VeiculoDao();
 
         produtos.setNumRows(0);
 
         for (Veiculo sec : cdao.readListaVeiculos()) {
-
             produtos.addRow(new Object[]{
                 sec.getId(),
                 sec.getPlaca(),
-                sec.getModelo(),
-               });
+                sec.getModelo(),});
         }
- }
-    public void readbusca(String nome){
-     DefaultTableModel produtos = (DefaultTableModel) jtplaca.getModel();
+    }
+
+    public void readbusca(String nome) {
+        
+        DefaultTableModel produtos = (DefaultTableModel) jtplaca.getModel();
+        
         VeiculoDao cdao = new VeiculoDao();
 
         produtos.setNumRows(0);
 
         for (Veiculo sec : cdao.readbuscaPlacas(nome)) {
-
             produtos.addRow(new Object[]{
                 sec.getId(),
                 sec.getPlaca(),
-                sec.getModelo(),
-               });
+                sec.getModelo(),});
         }
- }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +157,7 @@ public class ListPlaca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarActionPerformed
-       txtplaca.setText(jtplaca.getValueAt(jtplaca.getSelectedRow(), 1).toString());
+        txtplaca.setText(jtplaca.getValueAt(jtplaca.getSelectedRow(), 1).toString());
         dispose();
     }//GEN-LAST:event_jBAdicionarActionPerformed
 

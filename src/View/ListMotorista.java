@@ -120,21 +120,22 @@ public class ListMotorista extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void readbusca(String nome){
-     DefaultTableModel Motoristas = (DefaultTableModel) jtmotorista.getModel();
+    public void readbusca(String nome) {
+        
+        DefaultTableModel Motoristas = (DefaultTableModel) jtmotorista.getModel();
+        
         MotoristaDao cdao = new MotoristaDao();
 
         Motoristas.setNumRows(0);
 
         for (Motorista sec : cdao.readbuscaNomeMotorista(nome)) {
-
             Motoristas.addRow(new Object[]{
                 sec.getId(),
                 sec.getNome(),
-                sec.getCpf(),
-               });
+                sec.getCpf(),});
         }
- }
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         readbusca(txtbuscar.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -144,22 +145,22 @@ public class ListMotorista extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_BotaoAdicionarActionPerformed
 
- public void readTabela() {
-        
+    public void readTabela() {
+
         DefaultTableModel produtos = (DefaultTableModel) jtmotorista.getModel();
-         MotoristaDao cdao = new MotoristaDao();
+        
+        MotoristaDao cdao = new MotoristaDao();
 
         produtos.setNumRows(0);
-        
-        for (Motorista com : cdao.readListMotoristas()) {
 
+        for (Motorista com : cdao.readListMotoristas()) {
             produtos.addRow(new Object[]{
                 com.getId(),
                 com.getNome(),
-                com.getCpf(),
-            });
+                com.getCpf(),});
         }
- }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAdicionar;
     private javax.swing.JButton jButton2;

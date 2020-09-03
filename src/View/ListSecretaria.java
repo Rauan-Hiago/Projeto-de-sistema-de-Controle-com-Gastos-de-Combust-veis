@@ -131,50 +131,50 @@ public class ListSecretaria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- public void read(){
-     DefaultTableModel produtos = (DefaultTableModel) jtsecretaria.getModel();
+ public void read() {
+        
+        DefaultTableModel produtos = (DefaultTableModel) jtsecretaria.getModel();
+        
         SecretariaDao cdao = new SecretariaDao();
 
         produtos.setNumRows(0);
 
         for (Secretaria sec : cdao.ListarSecretarias()) {
-
             produtos.addRow(new Object[]{
                 sec.getId(),
                 sec.getNome(),
-                sec.getAbreviacao(),
-               });
+                sec.getAbreviacao(),});
         }
- }
-   
+    }
+
     private void jtsecretariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtsecretariaMouseClicked
-        
+
     }//GEN-LAST:event_jtsecretariaMouseClicked
 
     private void jtsecretariaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtsecretariaKeyReleased
-       
+
     }//GEN-LAST:event_jtsecretariaKeyReleased
-    public void readbusca(String nome){
-     DefaultTableModel secretarias = (DefaultTableModel) jtsecretaria.getModel();
+    public void readbusca(String nome) {
+        
+        DefaultTableModel secretarias = (DefaultTableModel) jtsecretaria.getModel();
+        
         SecretariaDao sdao = new SecretariaDao();
 
         secretarias.setNumRows(0);
 
         for (Secretaria sec : sdao.readbuscaNomeSecretaria(nome)) {
-
             secretarias.addRow(new Object[]{
                 sec.getId(),
                 sec.getNome(),
-                sec.getAbreviacao(),
-               });
+                sec.getAbreviacao(),});
         }
- }
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         readbusca(txtbuscar.getText());
+        readbusca(txtbuscar.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     txtsec.setText(jtsecretaria.getValueAt(jtsecretaria.getSelectedRow(), 1).toString());
+        txtsec.setText(jtsecretaria.getValueAt(jtsecretaria.getSelectedRow(), 1).toString());
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -21,8 +21,11 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
      * Creates new form CadastroDeCombustivel
      */
     public CadCombustivel() {
+        
         initComponents();
+       
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/gas-station.png")));
+        
         readTabelaCom();
     }
 
@@ -39,10 +42,8 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
                 com.getNome(),
                 com.getPreco(),
                 com.getData()
-
             });
         }
-
     }
 
     /**
@@ -287,21 +288,24 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         if (txtnome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Cargo.");
         } else if (txtpreco.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo CPF.!");
-
         } else {
             CombustivelDao dao = new CombustivelDao();
+
             Combustivel com = new Combustivel();
 
             com.setNome(txtnome.getText());
-
             com.setPreco(Double.parseDouble(txtpreco.getText()));
             com.setData(txtdata.getText());
+
             dao.createCombu(com);
+
             readTabelaCom();
+
             txtnome.setText("");
             txtpreco.setText("");
             txtdata.setText("");
@@ -309,6 +313,7 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtcomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtcomKeyReleased
+       
         if (jtcom.getSelectedRow() != -1) {
             txtnome.setText(jtcom.getValueAt(jtcom.getSelectedRow(), 1).toString());
             txtpreco.setText(jtcom.getValueAt(jtcom.getSelectedRow(), 2).toString());
@@ -325,72 +330,80 @@ public class CadCombustivel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtcomMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar esses dados?", title, JOptionPane.YES_NO_OPTION);
         
-         if(confirme == JOptionPane.YES_OPTION){ 
-        if (jtcom.getSelectedRow() != -1) {
-            Combustivel commo = new Combustivel();
-            CombustivelDao dao = new CombustivelDao();
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar esses dados?", title, JOptionPane.YES_NO_OPTION);
 
-            commo.setNome(txtnome.getText());
-            commo.setPreco(Double.parseDouble(txtpreco.getText()));
-            commo.setData(txtdata.getText());
-            commo.setId((int) jtcom.getValueAt(jtcom.getSelectedRow(), 0));
-            dao.atualizarCombu(commo);
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (jtcom.getSelectedRow() != -1) {
+                Combustivel commo = new Combustivel();
+                CombustivelDao dao = new CombustivelDao();
 
-            txtnome.setText("");
-            txtpreco.setText("");
-            txtdata.setText("");
+                commo.setNome(txtnome.getText());
+                commo.setPreco(Double.parseDouble(txtpreco.getText()));
+                commo.setData(txtdata.getText());
+                commo.setId((int) jtcom.getValueAt(jtcom.getSelectedRow(), 0));
+                
+                dao.atualizarCombu(commo);
 
-            readTabelaCom();
-        } else{JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+                txtnome.setText("");
+                txtpreco.setText("");
+                txtdata.setText("");
+
+                readTabelaCom();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
             }
-         
-         }else if(confirme == JOptionPane.NO_OPTION){
-                  JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
-         }
-                 
+
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
-        if(confirme == JOptionPane.YES_OPTION){ 
+       
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
+        
+        if (confirme == JOptionPane.YES_OPTION) {
             if (jtcom.getSelectedRow() != -1) {
-            Combustivel commo = new Combustivel();
-            CombustivelDao dao = new CombustivelDao();
+                Combustivel commo = new Combustivel();
+                CombustivelDao dao = new CombustivelDao();
 
-            commo.setId((int) jtcom.getValueAt(jtcom.getSelectedRow(), 0));
-            dao.deletarCombustivel(commo);
-            txtnome.setText("");
-            txtpreco.setText("");
-            txtpreco.setText("");
-            txtdata.setText("");
+                commo.setId((int) jtcom.getValueAt(jtcom.getSelectedRow(), 0));
+                
+                dao.deletarCombustivel(commo);
+                
+                txtnome.setText("");
+                txtpreco.setText("");
+                txtpreco.setText("");
+                txtdata.setText("");
 
-            readTabelaCom();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
-        } 
-        }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");}// TODO add your handling code here:
+                readTabelaCom();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-    jButton1.setToolTipText("Cadastsar Combustível!");
+        jButton1.setToolTipText("Cadastsar Combustível!");
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-      jButton1.setToolTipText("Editar Combustível!");
+        jButton1.setToolTipText("Editar Combustível!");
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-jButton1.setToolTipText("Excluir Combustível!");        // TODO add your handling code here:
+        jButton1.setToolTipText("Excluir Combustível!");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void ButaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButaoLimparActionPerformed
-            txtnome.setText("");
-            txtpreco.setText("");
-            txtpreco.setText("");
-            txtdata.setText("");
+        txtnome.setText("");
+        txtpreco.setText("");
+        txtpreco.setText("");
+        txtdata.setText("");
     }//GEN-LAST:event_ButaoLimparActionPerformed
 
 

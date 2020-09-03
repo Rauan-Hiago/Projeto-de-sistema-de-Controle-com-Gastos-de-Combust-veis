@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 public class LancamentoDao {
 
     public void create(Lancamento p) {
+        
         Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
@@ -34,7 +35,9 @@ public class LancamentoDao {
             String mes = p.getData().substring(3, 5);
             String ano = p.getData().substring(6);
             String datamysql = ano + "-" + mes + "-" + dia;
+            
             stmt = con.prepareStatement("INSERT INTO lancamento (nome,qtd,placa,tipo,secretaria,valor,datas) values(?,?,?,?,?,?,?)");
+           
             stmt.setString(1, p.getNome());
             stmt.setInt(2, p.getQtd());
             stmt.setString(3, p.getPlaca());
@@ -48,7 +51,6 @@ public class LancamentoDao {
             JOptionPane.showMessageDialog(null, "Salvo com sucesso");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -56,7 +58,9 @@ public class LancamentoDao {
     }
 
     public Double valor(String combustivel) {
+        
         double retorno = 1;
+        
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -72,8 +76,8 @@ public class LancamentoDao {
         } catch (SQLException ex) {
             Logger.getLogger(CombustivelDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return (retorno);
-
     }
 
     public void atualizar(Lancamento p) {
@@ -89,6 +93,7 @@ public class LancamentoDao {
             String datamysql = ano + "-" + mes + "-" + dia;
 
             stmt = con.prepareStatement("UPDATE lancamento SET nome = ?, qtd = ?, placa = ?, tipo =?, secretaria = ?, datas = ? where id = ?");
+            
             stmt.setString(1, p.getNome());
             stmt.setInt(2, p.getQtd());
             stmt.setString(3, p.getPlaca());
@@ -102,7 +107,6 @@ public class LancamentoDao {
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -118,13 +122,11 @@ public class LancamentoDao {
         try {
             stmt = con.prepareStatement("delete from lancamento where id =?");
             stmt.setInt(1, p.getId());
-
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!!!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -146,7 +148,6 @@ public class LancamentoDao {
             while (rs.next()) {
 
                 SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-
                 String dataFormatada = formatador.format(rs.getDate("datas"));
 
                 Lancamento com = new Lancamento();
@@ -157,21 +158,17 @@ public class LancamentoDao {
                 com.setQtd(rs.getInt("qtd"));
                 com.setTipo(rs.getString("tipo"));
                 com.setSecretaria(rs.getString("secretaria"));
-
                 com.setData(dataFormatada);
 
                 combu.add(com);
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return (combu);
-
     }
-
 }

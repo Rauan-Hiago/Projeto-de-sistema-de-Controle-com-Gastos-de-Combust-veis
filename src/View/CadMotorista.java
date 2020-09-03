@@ -5,7 +5,6 @@
  */
 package View;
 
-
 import ModeloDao.MotoristaDao;
 import Modelos.Motorista;
 import javax.swing.ImageIcon;
@@ -22,26 +21,29 @@ public class CadMotorista extends javax.swing.JInternalFrame {
      * Creates new form GerenciadorDeMotoristas
      */
     public CadMotorista() {
+
         initComponents();
+
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/taxi-driver.png")));
+
         readTabela();
     }
-     public void readTabela() {
-        
+
+    public void readTabela() {
+
         DefaultTableModel produtos = (DefaultTableModel) jTable1.getModel();
-         MotoristaDao cdao = new MotoristaDao();
+
+        MotoristaDao cdao = new MotoristaDao();
 
         produtos.setNumRows(0);
-        
-        for (Motorista com : cdao.readMotoristas()) {
 
+        for (Motorista com : cdao.readMotoristas()) {
             produtos.addRow(new Object[]{
                 com.getId(),
                 com.getNome(),
                 com.getCpf(),
                 com.getTelefone(),
                 com.getData()
-
             });
         }
     }
@@ -322,7 +324,7 @@ public class CadMotorista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtcpfActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+
         if (txtnome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome!!!!!");
         } else if (txtcpf.getText().trim().isEmpty()) {
@@ -331,36 +333,33 @@ public class CadMotorista extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Telefone!!!!!");
         } else if (txtdata.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Preencha o campo data!!!!!");
-        }  else {
-           
+        } else {
+
             Motorista commo = new Motorista();
             MotoristaDao dao = new MotoristaDao();
-                commo.setCpf(txtcpf.getText());
-                commo.setNome(txtnome.getText());
-                commo.setTelefone(txttelefone.getText());
-                commo.setData(txtdata.getText());
-    
-                dao.create(commo);
-                
-               
-                txtcpf.setText("");
-                txttelefone.setText("");
-                txtdata.setText("");
-                txtnome.setText("");
+            commo.setCpf(txtcpf.getText());
+            commo.setNome(txtnome.getText());
+            commo.setTelefone(txttelefone.getText());
+            commo.setData(txtdata.getText());
 
-                readTabela();
-             
+            dao.create(commo);
 
+            txtcpf.setText("");
+            txttelefone.setText("");
+            txtdata.setText("");
+            txtnome.setText("");
+
+            readTabela();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
- if (jTable1.getSelectedRow() != -1) {
+        if (jTable1.getSelectedRow() != -1) {
             txtnome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
             txttelefone.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
             txtcpf.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
             txtdata.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
-            }        // TODO add your handling code here:
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jTable1KeyReleased
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -369,33 +368,60 @@ public class CadMotorista extends javax.swing.JInternalFrame {
             txttelefone.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
             txtcpf.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
             txtdata.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
-            }
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
-        
-        if(confirme == JOptionPane.YES_OPTION){
-        if (txtnome.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo nome!!!!!");
-        } else if (txtcpf.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo CPF!!!!!");
-        } else if (txttelefone.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Telefone!!!!!");
-        }  else if (txtdata.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do Data de Cadastro!!!!!");
-        } else {
+
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (txtnome.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo nome!!!!!");
+            } else if (txtcpf.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo CPF!!!!!");
+            } else if (txttelefone.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Telefone!!!!!");
+            } else if (txtdata.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do Data de Cadastro!!!!!");
+            } else {
+                if (jTable1.getSelectedRow() != -1) {
+                    Motorista commo = new Motorista();
+                    MotoristaDao dao = new MotoristaDao();
+
+                    commo.setNome(txtnome.getText());
+                    commo.setCpf(txtcpf.getText());
+                    commo.setTelefone(txttelefone.getText());
+                    commo.setData(txtdata.getText());
+
+                    commo.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+                    
+                    dao.atualizar(commo);
+
+                    txtnome.setText("");
+                    txtcpf.setText("");
+                    txttelefone.setText("");
+                    txtdata.setText("");
+
+                    readTabela();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+                }
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
+
+        if (confirme == JOptionPane.YES_OPTION) {
             if (jTable1.getSelectedRow() != -1) {
                 Motorista commo = new Motorista();
                 MotoristaDao dao = new MotoristaDao();
 
-                commo.setNome(txtnome.getText());
-                commo.setCpf(txtcpf.getText());
-                commo.setTelefone(txttelefone.getText());
-                commo.setData(txtdata.getText());
-
                 commo.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
-                dao.atualizar(commo);
+                dao.deletar(commo);
 
                 txtnome.setText("");
                 txtcpf.setText("");
@@ -403,62 +429,34 @@ public class CadMotorista extends javax.swing.JInternalFrame {
                 txtdata.setText("");
 
                 readTabela();
-            }else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
             }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
         }
-        }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
-                }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
-        
-            if(confirme == JOptionPane.YES_OPTION){
-                if (jTable1.getSelectedRow() != -1) {
-            Motorista commo = new Motorista();
-            MotoristaDao dao = new MotoristaDao();
-
-            commo.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
-            dao.deletar(commo);
-
-            txtnome.setText("");
-            txtcpf.setText("");
-            txttelefone.setText("");
-            txtdata.setText("");
-            
-            
-
-            readTabela();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
-        }
-            }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
-                }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-       jButton1.setToolTipText("Cadastrar Motorista!"); 
+        jButton1.setToolTipText("Cadastrar Motorista!");
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-       jButton2.setToolTipText("Editar Motorista!"); 
+        jButton2.setToolTipText("Editar Motorista!");
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        jButton3.setToolTipText("Excluir Motorista!"); 
+        jButton3.setToolTipText("Excluir Motorista!");
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-            txtnome.setText("");
-            txtcpf.setText("");
-            txttelefone.setText("");
-            txtdata.setText("");
+        txtnome.setText("");
+        txtcpf.setText("");
+        txttelefone.setText("");
+        txtdata.setText("");
     }//GEN-LAST:event_BotaoLimparActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoLimpar;

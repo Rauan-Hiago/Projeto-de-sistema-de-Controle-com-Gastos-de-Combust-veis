@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 public class MotoristaDao {
 
     public void create(Motorista p) {
+        
         Connection con = Conexao.getConnection();
 
         PreparedStatement stmt = null;
@@ -34,6 +35,7 @@ public class MotoristaDao {
             String ano = p.getData().substring(6);
             String datamysql = ano + "-" + mes + "-" + dia;
             stmt = con.prepareStatement("INSERT INTO motoristas (nome,cpf,datas,telefone) values(?,?,?,?)");
+            
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getCpf());
             stmt.setString(4, p.getTelefone());
@@ -44,7 +46,6 @@ public class MotoristaDao {
             JOptionPane.showMessageDialog(null, "Salvo com sucesso");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -64,12 +65,9 @@ public class MotoristaDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-
                 SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 
                 String dataFormatada = formatador.format(rs.getDate("datas"));
-
-                
 
                 Motorista com = new Motorista();
 
@@ -77,22 +75,20 @@ public class MotoristaDao {
                 com.setNome(rs.getString("nome"));
                 com.setCpf(rs.getString("cpf"));
                 com.setTelefone(rs.getString("telefone"));
-               
                 com.setData(dataFormatada);
 
                 combu.add(com);
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return (combu);
-
     }
+
     public List<Motorista> readListMotoristas() {
 
         Connection con = Conexao.getConnection();
@@ -106,13 +102,6 @@ public class MotoristaDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-
-                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-
-                String dataFormatada = formatador.format(rs.getDate("datas"));
-
-                
-
                 Motorista com = new Motorista();
 
                 com.setId(rs.getInt("id"));
@@ -127,10 +116,9 @@ public class MotoristaDao {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return (combu);
-
     }
 
     public void atualizar(Motorista p) {
@@ -146,6 +134,7 @@ public class MotoristaDao {
             String datamysql = ano + "-" + mes + "-" + dia;
 
             stmt = con.prepareStatement("UPDATE motoristas SET nome = ?, cpf = ?, telefone = ?, datas =? where id = ?");
+            
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getCpf());
             stmt.setString(3, p.getTelefone());
@@ -157,7 +146,6 @@ public class MotoristaDao {
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -179,7 +167,6 @@ public class MotoristaDao {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!!!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -201,57 +188,41 @@ public class MotoristaDao {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!!!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
         }
     }
-    
-    public List<Motorista> readbuscaNomeMotorista(String nome){
-    
-    Connection con = Conexao.getConnection();
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-        
-        List<Motorista> veic = new ArrayList<>(); 
-        
+
+    public List<Motorista> readbuscaNomeMotorista(String nome) {
+
+        Connection con = Conexao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Motorista> veic = new ArrayList<>();
+
         try {
             stmt = con.prepareStatement("SELECT * FROM motoristas where nome LIKE ?");
-            stmt.setString(1, nome+"%");
+            stmt.setString(1, nome + "%");
             rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                
-               SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-            
-               String dataFormatada = formatador.format(rs.getDate("datas"));
-             
-               
-            Motorista motorista = new  Motorista();
-            
-            motorista.setId(rs.getInt("id"));
-            
-            
-            
-            motorista.setNome(rs.getString("nome"));
-            motorista.setCpf(rs.getString("cpf"));
-           
-           
-           
-            
-            veic.add(motorista);
-            
+
+            while (rs.next()) {
+                Motorista motorista = new Motorista();
+
+                motorista.setId(rs.getInt("id"));
+                motorista.setNome(rs.getString("nome"));
+                motorista.setCpf(rs.getString("cpf"));
+
+                veic.add(motorista);
             }
-            
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " +ex);
-        }finally{
-        Conexao.closeConnection(con, stmt, rs);
-        
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
+        } finally {
+            Conexao.closeConnection(con, stmt, rs);
         }
-        return(veic);
-    
+        
+        return (veic);
     }
 }

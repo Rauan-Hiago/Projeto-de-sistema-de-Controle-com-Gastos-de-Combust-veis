@@ -5,7 +5,6 @@
  */
 package View;
 
-import ModeloDao.CombustivelDao;
 import ModeloDao.LancamentoDao;
 import ModeloDao.SecretariaDao;
 import Modelos.Lancamento;
@@ -21,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class cadLancamento extends javax.swing.JInternalFrame {
 
     public cadLancamento(String nome) {
+        
         initComponents();
         String nome1 = nome;
         txtsec.setText(nome);
@@ -33,26 +33,27 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }
 
     public cadLancamento() {
+        
         initComponents();
 
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/check.png")));
+        
         readTabela();
     }
 
     void adicionarsecretaria(String nome) {
-
         txtsec.setText(nome);
     }
 
     public void readTabela() {
 
         DefaultTableModel produtos = (DefaultTableModel) jtcombustiveis.getModel();
+        
         LancamentoDao dao = new LancamentoDao();
 
         produtos.setNumRows(0);
 
         for (Lancamento com : dao.read()) {
-
             produtos.addRow(new Object[]{
                 com.getId(),
                 com.getNome(),
@@ -457,6 +458,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         SecretariaDao daosec = new SecretariaDao();
 
         if (txtplaca.getText().trim().isEmpty()) {
@@ -474,7 +476,9 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         } else {
             double mult = 0;
             int num;
+            
             Lancamento commo = new Lancamento();
+            
             LancamentoDao dao = new LancamentoDao();
 
             mult = dao.valor(txtcom.getText());
@@ -586,8 +590,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEditarActionPerformed
 
     private void jtcombustiveisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtcombustiveisKeyReleased
-
-        if (jtcombustiveis.getSelectedRow() != -1) {
+       if (jtcombustiveis.getSelectedRow() != -1) {
             txtuser.setText(jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 1).toString());
             txtplaca.setText(jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 2).toString());
             txtcom.setText(jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 3).toString());
@@ -599,7 +602,6 @@ public class cadLancamento extends javax.swing.JInternalFrame {
 
     private void jtcombustiveisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcombustiveisMouseClicked
         if (jtcombustiveis.getSelectedRow() != -1) {
-
             txtuser.setText(jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 1).toString());
             txtplaca.setText(jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 2).toString());
             txtcom.setText(jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 3).toString());
@@ -621,7 +623,6 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         TelaInicial.jdinterno.add(list);
         list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
         list.setVisible(true);
-
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -658,19 +659,16 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             TelaInicial.jdinterno.add(list);
             list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
             list.setVisible(true);
-            
         } else if (combo == "Gerenciar Motoristas") {
             CadMotorista list = new CadMotorista();
             TelaInicial.jdinterno.add(list);
             list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
             list.setVisible(true);
-
         } else if (combo == "Gerenciar usuários") {
             CadFuncionario list = new CadFuncionario();
             TelaInicial.jdinterno.add(list);
             list.setLocation(jdinterno.getWidth() / 2 - list.getWidth() / 2, jdinterno.getHeight() / 2 - list.getHeight() / 2);
             list.setVisible(true);
-
         } else if (combo == "Gerenciar Combustíveis") {
             CadCombustivel list = new CadCombustivel();
             TelaInicial.jdinterno.add(list);

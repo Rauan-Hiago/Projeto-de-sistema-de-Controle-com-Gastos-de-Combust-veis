@@ -33,7 +33,6 @@ public class SubSecretariaDao {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!!!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -48,13 +47,14 @@ public class SubSecretariaDao {
         PreparedStatement stmt = null;
 
         try {
-
             String dia = sec.getData().substring(0, 2);
             String mes = sec.getData().substring(3, 5);
             String ano = sec.getData().substring(6);
 
             String datamysql = ano + "-" + mes + "-" + dia;
+            
             stmt = con.prepareStatement("INSERT INTO secretaria (nome,abreviacao,datas) values(?,?,?)");
+            
             stmt.setString(1, sec.getNome());
             stmt.setString(2, sec.getAbreviacao());
             stmt.setString(3, datamysql);
@@ -64,12 +64,9 @@ public class SubSecretariaDao {
             JOptionPane.showMessageDialog(null, "Secretaria salva com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
         }
-    }
-     
-    
+    }    
 }

@@ -10,6 +10,7 @@ package Modelos;
  * @author Rauan Hiago
  */
 public class Combustivel {
+
     private String nome;
     private double preco;
     private int id;
@@ -46,6 +47,5 @@ public class Combustivel {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
 }

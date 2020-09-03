@@ -340,13 +340,14 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtdonoActionPerformed
 
     public void readTable() {
+
         DefaultTableModel produtos = (DefaultTableModel) jtveiculo.getModel();
+
         VeiculoDao cdao = new VeiculoDao();
 
         produtos.setNumRows(0);
 
         for (Veiculo veic : cdao.read()) {
-
             produtos.addRow(new Object[]{
                 veic.getId(),
                 veic.getPlaca(),
@@ -355,15 +356,17 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
                 veic.getAno(),
                 veic.getDono(),
                 veic.getData()
-
             });
         }
     }
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         VeiculoDao dao = new VeiculoDao();
+
         Veiculo carros = new Veiculo();
+
         if (txtplaca.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
         } else if (txtano.getText().trim().isEmpty()) {
@@ -388,6 +391,7 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
             carros.setPlaca(txtplaca.getText());
 
             dao.create(carros);
+
             readTable();
 
             txtano.setText("");
@@ -397,58 +401,59 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
             txtplaca.setText("");
             txtmodelo.setText("");
         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
-        
-         if(confirme == JOptionPane.YES_OPTION){ 
-        if (txtplaca.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
-        } else if (txtano.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
-        } else if (txtcor.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo cor!!!!!");
-        } else if (txtdata.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
-        } else if (txtdono.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Dono!!!!!");
-        } else if (txtmodelo.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Modelo!!!!!");
-        } else if (txtplaca.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do Placa!!!!!");
-        } else {
-            if (jtveiculo.getSelectedRow() != -1) {
-                Veiculo veic = new Veiculo();
-                VeiculoDao dao = new VeiculoDao();
 
-                veic.setData(txtdata.getText());
-                veic.setPlaca(txtplaca.getText());
-                veic.setAno(Integer.parseInt(txtano.getText()));
-                veic.setDono(txtdono.getText());
-                veic.setModelo(txtmodelo.getText());
-                veic.setCor(txtcor.getText());
+        int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
 
-                veic.setId((int) jtveiculo.getValueAt(jtveiculo.getSelectedRow(), 0));
-                dao.atualizar(veic);
-                txtano.setText("");
-                txtplaca.setText("");
-                txtcor.setText("");
-                txtdata.setText("");
-                txtmodelo.setText("");
-                txtdono.setText("");
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (txtplaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
+            } else if (txtano.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
+            } else if (txtcor.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo cor!!!!!");
+            } else if (txtdata.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
+            } else if (txtdono.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Dono!!!!!");
+            } else if (txtmodelo.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Modelo!!!!!");
+            } else if (txtplaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do Placa!!!!!");
+            } else {
+                if (jtveiculo.getSelectedRow() != -1) {
+                    Veiculo veic = new Veiculo();
 
-                readTable();
+                    VeiculoDao dao = new VeiculoDao();
 
-            }else {
-            JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
-        }
-        }  
-         }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
-                }// TODO add your handling code here:
+                    veic.setData(txtdata.getText());
+                    veic.setPlaca(txtplaca.getText());
+                    veic.setAno(Integer.parseInt(txtano.getText()));
+                    veic.setDono(txtdono.getText());
+                    veic.setModelo(txtmodelo.getText());
+                    veic.setCor(txtcor.getText());
+                    veic.setId((int) jtveiculo.getValueAt(jtveiculo.getSelectedRow(), 0));
+
+                    dao.atualizar(veic);
+
+                    txtano.setText("");
+                    txtplaca.setText("");
+                    txtcor.setText("");
+                    txtdata.setText("");
+                    txtmodelo.setText("");
+                    txtdono.setText("");
+
+                    readTable();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
+                }
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtveiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtveiculoKeyReleased
@@ -471,66 +476,71 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
             txtdono.setText(jtveiculo.getValueAt(jtveiculo.getSelectedRow(), 5).toString());
             txtdata.setText(jtveiculo.getValueAt(jtveiculo.getSelectedRow(), 6).toString());
     }//GEN-LAST:event_jtveiculoMouseClicked
-   }
+    }
 
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
         Veiculo veic = new Veiculo();
+        
         VeiculoDao dao = new VeiculoDao();
+        
         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
-        if(confirme == JOptionPane.YES_OPTION){
-        if (txtplaca.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
-        } else if (txtano.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
-        } else if (txtcor.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo cor!!!!!");
-        } else if (txtdata.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
-        } else if (txtdono.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Dono!!!!!");
-        } else if (txtmodelo.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Modelo!!!!!");
-        } else if (txtplaca.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do Placa!!!!!");
-        } else {
-            if (jtveiculo.getSelectedRow() != -1) {
-                veic.setData(txtdata.getText());
-                veic.setPlaca(txtplaca.getText());
-                veic.setAno(Integer.parseInt(txtano.getText()));
-                veic.setDono(txtdono.getText());
-                veic.setModelo(txtmodelo.getText());
-                veic.setCor(txtcor.getText());
-                veic.setId((int) jtveiculo.getValueAt(jtveiculo.getSelectedRow(), 0));
-
-                dao.deletar(veic);
-                readTable();
-                txtano.setText("");
-                txtplaca.setText("");
-                txtcor.setText("");
-                txtdata.setText("");
-                txtmodelo.setText("");
-                txtdono.setText("");
+        
+        if (confirme == JOptionPane.YES_OPTION) {
+            if (txtplaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
+            } else if (txtano.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Tipo!!!!!");
+            } else if (txtcor.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo cor!!!!!");
+            } else if (txtdata.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Secretaria!!!!!");
+            } else if (txtdono.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Dono!!!!!");
+            } else if (txtmodelo.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Modelo!!!!!");
+            } else if (txtplaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do Placa!!!!!");
             } else {
-                JOptionPane.showMessageDialog(null, " Selecione um resgitro para apagá-lo!!!");
-            }
-    
-        }
-        }else if(confirme == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
+                if (jtveiculo.getSelectedRow() != -1) {
+                    veic.setData(txtdata.getText());
+                    veic.setPlaca(txtplaca.getText());
+                    veic.setAno(Integer.parseInt(txtano.getText()));
+                    veic.setDono(txtdono.getText());
+                    veic.setModelo(txtmodelo.getText());
+                    veic.setCor(txtcor.getText());
+                    veic.setId((int) jtveiculo.getValueAt(jtveiculo.getSelectedRow(), 0));
+
+                    dao.deletar(veic);
+                    
+                    readTable();
+                    
+                    txtano.setText("");
+                    txtplaca.setText("");
+                    txtcor.setText("");
+                    txtdata.setText("");
+                    txtmodelo.setText("");
+                    txtdono.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(null, " Selecione um resgitro para apagá-lo!!!");
                 }
+            }
+        } else if (confirme == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setToolTipText("Cadastrar Veículo!"); 
+        jButton1.setToolTipText("Cadastrar Veículo!");
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-jButton2.setToolTipText("Editar Veículo!");         // TODO add your handling code here:
+        jButton2.setToolTipText("Editar Veículo!");         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-jButton3.setToolTipText("Excluir Veículo!");         // TODO add your handling code here:
+        jButton3.setToolTipText("Excluir Veículo!");         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void txtplacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplacaActionPerformed
@@ -538,14 +548,14 @@ jButton3.setToolTipText("Excluir Veículo!");         // TODO add your handling 
     }//GEN-LAST:event_txtplacaActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-                txtano.setText("");
-                txtplaca.setText("");
-                txtcor.setText("");
-                txtdata.setText("");
-                txtmodelo.setText("");
-                txtdono.setText("");
+        txtano.setText("");
+        txtplaca.setText("");
+        txtcor.setText("");
+        txtdata.setText("");
+        txtmodelo.setText("");
+        txtdono.setText("");
     }//GEN-LAST:event_BotaoLimparActionPerformed
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoLimpar;
     private javax.swing.JButton jButton1;

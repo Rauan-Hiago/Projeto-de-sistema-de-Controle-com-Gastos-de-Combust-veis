@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+
 import ModeloDao.FuncionarioDao;
 import Modelos.Usuario;
 import javax.swing.ImageIcon;
@@ -318,6 +319,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void readTabela() {
+        
         DefaultTableModel produtos = (DefaultTableModel) jtfunc.getModel();
         FuncionarioDao cdao = new FuncionarioDao();
 
@@ -332,11 +334,10 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 com.getCpf(),
                 com.getCargo(),
                 com.getData()
-
             });
         }
-
     }
+    
     private void jtfuncKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfuncKeyReleased
         if (jtfunc.getSelectedRow() != -1) {
             txtnome.setText(jtfunc.getValueAt(jtfunc.getSelectedRow(), 1).toString());
@@ -358,15 +359,19 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfuncMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
 
-        if(confirme == JOptionPane.YES_OPTION){
+        if (confirme == JOptionPane.YES_OPTION) {
             if (jtfunc.getSelectedRow() != -1) {
                 Usuario commo = new Usuario();
+                
                 FuncionarioDao dao = new FuncionarioDao();
 
                 commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
+                
                 dao.deletar(commo);
+                
                 txtcargo.setText("");
                 txtcpd.setText("");
                 txtemail.setText("");
@@ -378,10 +383,9 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Selecione algum registro para excluir!!!!");
             }
-        }else if(confirme == JOptionPane.NO_OPTION){
+        } else if (confirme == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "Exclusão cancelada!!!");
         }
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
@@ -389,15 +393,14 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente editar os dados?", title, JOptionPane.YES_NO_OPTION);
 
-        if(confirme == JOptionPane.YES_OPTION){
-
+        if (confirme == JOptionPane.YES_OPTION) {
             if (txtcargo.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preencha o Campo Cargo!!!!!");
             } else if (txtcpd.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preencha o Campo CPF!!!!!");
-
             } else if (txtemail.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preencha o Campo Email!!!!!");
             } else if (txtnome.getText().trim().isEmpty()) {
@@ -405,6 +408,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             } else {
                 if (jtfunc.getSelectedRow() != -1) {
                     Usuario commo = new Usuario();
+                    
                     FuncionarioDao dao = new FuncionarioDao();
 
                     commo.setNome(txtnome.getText());
@@ -414,7 +418,9 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                     commo.setData(txtdata.getText());
 
                     commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
+                    
                     dao.atualizar(commo);
+                    
                     txtcargo.setText("");
                     txtcpd.setText("");
                     txtemail.setText("");
@@ -423,11 +429,11 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
 
                     readTabela();
 
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Selecione algum registro para editar!!!!");
                 }
             }
-        }else if(confirme == JOptionPane.NO_OPTION){
+        } else if (confirme == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "Atualização cancelada!!!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -442,15 +448,13 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Cargo.");
         } else if (txtcpd.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo CPF.!");
-
         } else if (txtemail.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o campo Email.");
         } else if (txtnome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome.");
-        } else if (txtdata.getText().length() != 10 ) {
+        } else if (txtdata.getText().length() != 10) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Data de Cadastro!");
-        }
-        else if(txtcpd.getText().length()!= 14){
+        } else if (txtcpd.getText().length() != 14) {
             JOptionPane.showMessageDialog(null, "O número de CPF não está completo! Digite novamente.");
         } else {
             FuncionarioDao dao = new FuncionarioDao();
@@ -466,6 +470,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 user.setData(txtdata.getText());
 
                 dao.create(user);
+                
                 readTabela();
 
                 txtcargo.setText("");
@@ -487,11 +492,11 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-                txtcargo.setText("");
-                txtcpd.setText("");
-                txtemail.setText("");
-                txtnome.setText("");
-                txtdata.setText("");
+        txtcargo.setText("");
+        txtcpd.setText("");
+        txtemail.setText("");
+        txtnome.setText("");
+        txtdata.setText("");
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
 

@@ -10,6 +10,7 @@ package Modelos;
  * @author Rauan Hiago
  */
 public class Secretaria {
+
     private String nome;
     private String abreviacao;
     private int id;
@@ -46,5 +47,5 @@ public class Secretaria {
     public void setData(String data) {
         this.data = data;
     }
-    
+
 }

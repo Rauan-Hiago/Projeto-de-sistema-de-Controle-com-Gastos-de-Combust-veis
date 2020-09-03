@@ -33,7 +33,6 @@ public class FuncionarioDao {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!!!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO Excluir!!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -51,9 +50,9 @@ public class FuncionarioDao {
             String dia = p.getData().substring(0, 2);
             String mes = p.getData().substring(3, 5);
             String ano = p.getData().substring(6);
-
             String datamysql = ano + "-" + mes + "-" + dia;
             stmt = con.prepareStatement("INSERT INTO usuario (nome,cpf,email,cargo,datas) values(?,?,?,?,?)");
+            
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getCpf());
             stmt.setString(3, p.getEmail());
@@ -65,7 +64,6 @@ public class FuncionarioDao {
             JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO SALVAR " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -93,10 +91,8 @@ public class FuncionarioDao {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
         return chek;
-
     }
 
     public boolean chekar(String login, String senha) {
@@ -114,17 +110,15 @@ public class FuncionarioDao {
 
             if (rs.next()) {
                 chek = true;
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return chek;
-
     }
 
     public void atualizar(Usuario p) {
@@ -137,9 +131,9 @@ public class FuncionarioDao {
             String dia = p.getData().substring(0, 2);
             String mes = p.getData().substring(3, 5);
             String ano = p.getData().substring(6);
-
             String datamysql = ano + "-" + mes + "-" + dia;
             stmt = con.prepareStatement("UPDATE usuario SET nome = ?, cargo = ?, email = ?, cpf =?, datas=? where id = ?");
+            
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getCargo());
             stmt.setString(3, p.getEmail());
@@ -152,7 +146,6 @@ public class FuncionarioDao {
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!!");
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "ERRO AO ATUALIZAR!! " + ex);
         } finally {
             Conexao.closeConnection(con, stmt);
@@ -173,11 +166,8 @@ public class FuncionarioDao {
 
             while (rs.next()) {
                 SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-
                 String dataFormatada = formatador.format(rs.getDate("datas"));
-
                 
-
                 Usuario com = new Usuario();
 
                 com.setId(rs.getInt("id"));
@@ -188,16 +178,14 @@ public class FuncionarioDao {
                 com.setData(dataFormatada);
 
                 combu.add(com);
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar " + ex);
         } finally {
             Conexao.closeConnection(con, stmt, rs);
-
         }
+        
         return (combu);
-
     }
 }

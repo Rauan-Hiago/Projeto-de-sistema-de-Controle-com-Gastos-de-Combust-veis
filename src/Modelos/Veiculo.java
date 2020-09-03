@@ -10,6 +10,7 @@ package Modelos;
  * @author Rauan Hiago
  */
 public class Veiculo {
+
     private int id;
     private String placa;
     private String Cor;
@@ -73,8 +74,5 @@ public class Veiculo {
     public void setDono(String dono) {
         this.dono = dono;
     }
-    
-    
-    
-    
+
 }

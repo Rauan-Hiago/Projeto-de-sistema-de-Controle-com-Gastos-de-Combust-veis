@@ -1,14 +1,13 @@
-
 package Modelos;
 
-
 public class Lancamento {
-    private  int qtd;
+
+    private int qtd;
     private int id;
     private String secretaria;
-    private  String nome;
-    private  String tipo;
-    private  String placa;
+    private String nome;
+    private String tipo;
+    private String placa;
     private double valor;
     private String data;
 
@@ -35,9 +34,6 @@ public class Lancamento {
     public void setId(int id) {
         this.id = id;
     }
-   
-    
-   
 
     public String getPlaca() {
         return placa;
@@ -71,15 +67,12 @@ public class Lancamento {
         this.tipo = tipo;
     }
 
-   
- public String getSecretaria() {
+    public String getSecretaria() {
         return secretaria;
     }
 
     public void setSecretaria(String secretaria) {
         this.secretaria = secretaria;
     }
-    
-    
-    
+
 }

@@ -10,6 +10,7 @@ package Modelos;
  * @author Rauan Hiago
  */
 public class Motorista {
+
     private int id;
     private String nome;
     private String cpf;
@@ -55,5 +56,5 @@ public class Motorista {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
+
 }

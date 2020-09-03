@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package Modelos;
- 
 
 public class Usuario {
-    
+
     private int id;
     private String nome;
     private String senha;
@@ -32,7 +31,6 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    
     private String login;
 
     public String getNome() {
@@ -42,7 +40,6 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-   
 
     public String getCargo() {
         return cargo;
@@ -83,6 +80,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
 }
