@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-import ModeloDao.UsuarioDao;
+import ModeloDao.FuncionarioDao;
 import Modelos.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -319,7 +319,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
 
     public void readTabela() {
         DefaultTableModel produtos = (DefaultTableModel) jtfunc.getModel();
-        UsuarioDao cdao = new UsuarioDao();
+        FuncionarioDao cdao = new FuncionarioDao();
 
         produtos.setNumRows(0);
 
@@ -363,7 +363,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         if(confirme == JOptionPane.YES_OPTION){
             if (jtfunc.getSelectedRow() != -1) {
                 Usuario commo = new Usuario();
-                UsuarioDao dao = new UsuarioDao();
+                FuncionarioDao dao = new FuncionarioDao();
 
                 commo.setId((int) jtfunc.getValueAt(jtfunc.getSelectedRow(), 0));
                 dao.deletar(commo);
@@ -405,7 +405,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
             } else {
                 if (jtfunc.getSelectedRow() != -1) {
                     Usuario commo = new Usuario();
-                    UsuarioDao dao = new UsuarioDao();
+                    FuncionarioDao dao = new FuncionarioDao();
 
                     commo.setNome(txtnome.getText());
                     commo.setCpf(txtcpd.getText());
@@ -453,7 +453,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         else if(txtcpd.getText().length()!= 14){
             JOptionPane.showMessageDialog(null, "O número de CPF não está completo! Digite novamente.");
         } else {
-            UsuarioDao dao = new UsuarioDao();
+            FuncionarioDao dao = new FuncionarioDao();
             if (dao.chekarUser(txtnome.getText())) {
                 JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado");
             } else {

@@ -5,7 +5,7 @@
  */
 package View;
 
-import ModeloDao.VeiculosDao;
+import ModeloDao.VeiculoDao;
 import Modelos.Veiculo;
 import static View.cadLancamento.txtplaca;
 import javax.swing.ImageIcon;
@@ -27,7 +27,7 @@ public class ListPlaca extends javax.swing.JInternalFrame {
     }
     public void read(){
      DefaultTableModel produtos = (DefaultTableModel) jtplaca.getModel();
-        VeiculosDao cdao = new VeiculosDao();
+        VeiculoDao cdao = new VeiculoDao();
 
         produtos.setNumRows(0);
 
@@ -42,7 +42,7 @@ public class ListPlaca extends javax.swing.JInternalFrame {
  }
     public void readbusca(String nome){
      DefaultTableModel produtos = (DefaultTableModel) jtplaca.getModel();
-        VeiculosDao cdao = new VeiculosDao();
+        VeiculoDao cdao = new VeiculoDao();
 
         produtos.setNumRows(0);
 

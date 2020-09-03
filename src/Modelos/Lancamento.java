@@ -2,7 +2,7 @@
 package Modelos;
 
 
-public class Combustivel {
+public class Lancamento {
     private  int qtd;
     private int id;
     private String secretaria;

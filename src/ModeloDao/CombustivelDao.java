@@ -3,7 +3,7 @@ package ModeloDao;
 
 import Modelos.Combu;
 import Conexao.Conexao;
-import Modelos.Combustivel;
+import Modelos.Lancamento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author Rauan Hiago
  */
 public class CombustivelDao {
-    public void create(Combustivel p){
+    public void create(Lancamento p){
          Connection con = Conexao.getConnection();
         
         PreparedStatement stmt = null;
@@ -54,13 +54,13 @@ public class CombustivelDao {
         Conexao.closeConnection(con,stmt);
         }
     }
-    public List<Combustivel> readListCombustivel(){
+    public List<Lancamento> readListCombustivel(){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<Combustivel> combu = new ArrayList<>(); 
+        List<Lancamento> combu = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM combustivel");
@@ -76,7 +76,7 @@ public class CombustivelDao {
              
             
             
-            Combustivel com = new Combustivel();
+            Lancamento com = new Lancamento();
                 
             com.setId(rs.getInt("id"));
             com.setNome(rs.getString("nome"));
@@ -124,13 +124,13 @@ public class CombustivelDao {
           return(retorno);
     
     }
-    public List<Combustivel> read(){
+    public List<Lancamento> read(){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<Combustivel> combu = new ArrayList<>(); 
+        List<Lancamento> combu = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM lancamento");
@@ -146,7 +146,7 @@ public class CombustivelDao {
              
             
             
-            Combustivel com = new Combustivel();
+            Lancamento com = new Lancamento();
                 
             com.setId(rs.getInt("id"));
             com.setNome(rs.getString("nome"));
@@ -171,7 +171,7 @@ public class CombustivelDao {
         return(combu);
     
     }
-     public void atualizar(Combustivel p){
+     public void atualizar(Lancamento p){
     
         Connection con = Conexao.getConnection();
         
@@ -232,7 +232,7 @@ public class CombustivelDao {
         }
     }
      
-     public void deletar(Combustivel p){
+     public void deletar(Lancamento p){
     
         Connection con = Conexao.getConnection();
         
@@ -366,13 +366,13 @@ public class CombustivelDao {
         }
     }
      
-     public List<Combustivel> readbuscaNomeCombustivel(String nome){
+     public List<Lancamento> readbuscaNomeCombustivel(String nome){
     
     Connection con = Conexao.getConnection();
     PreparedStatement stmt = null;
     ResultSet rs = null;
         
-        List<Combustivel> veic = new ArrayList<>(); 
+        List<Lancamento> veic = new ArrayList<>(); 
         
         try {
             stmt = con.prepareStatement("SELECT * FROM combustivel where nome LIKE ?");
@@ -386,7 +386,7 @@ public class CombustivelDao {
                String dataFormatada = formatador.format(rs.getDate("datas"));
              
                
-            Combustivel combustivel = new Combustivel();
+            Lancamento combustivel = new Lancamento();
             
             combustivel.setId(rs.getInt("id"));
             

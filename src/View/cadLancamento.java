@@ -7,7 +7,7 @@ package View;
 
 import ModeloDao.CombustivelDao;
 import ModeloDao.SecretariaDao;
-import Modelos.Combustivel;
+import Modelos.Lancamento;
 import static View.TelaInicial.jdinterno;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -54,7 +54,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
         
-        for (Combustivel com : cdao.read()) {
+        for (Lancamento com : cdao.read()) {
 
             produtos.addRow(new Object[]{
                 com.getId(),
@@ -478,7 +478,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         } else {
             double mult = 0;
             int num;
-            Combustivel commo = new Combustivel();
+            Lancamento commo = new Lancamento();
             CombustivelDao dao = new CombustivelDao();
 
             mult = dao.valor(txtcom.getText());
@@ -517,7 +517,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
         
             if(confirme == JOptionPane.YES_OPTION){
             if (jtcombustiveis.getSelectedRow() != -1) {
-            Combustivel commo = new Combustivel();
+            Lancamento commo = new Lancamento();
             CombustivelDao dao = new CombustivelDao();
 
             commo.setId((int) jtcombustiveis.getValueAt(jtcombustiveis.getSelectedRow(), 0));
@@ -556,7 +556,7 @@ public class cadLancamento extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome do motorista!!!!!");
         } else {
             if (jtcombustiveis.getSelectedRow() != -1) {
-                Combustivel commo = new Combustivel();
+                Lancamento commo = new Lancamento();
                 CombustivelDao dao = new CombustivelDao();
 
                 commo.setNome(txtuser.getText());

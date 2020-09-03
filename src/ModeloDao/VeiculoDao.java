@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author Rauan Hiago
  */
-public class VeiculosDao {
+public class VeiculoDao {
     
     public void deletar(Veiculo veic){
     

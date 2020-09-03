@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class UsuarioDao {
+public class FuncionarioDao {
 
     public void deletar(Usuario p) {
 

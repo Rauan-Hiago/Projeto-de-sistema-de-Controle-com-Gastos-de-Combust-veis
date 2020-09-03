@@ -6,7 +6,7 @@
 package View;
 
 import ModeloDao.CombustivelDao;
-import Modelos.Combustivel;
+import Modelos.Lancamento;
 import static View.cadLancamento.txtcom;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -32,7 +32,7 @@ public class ListCombustivel extends javax.swing.JInternalFrame {
 
         produtos.setNumRows(0);
         
-        for (Combustivel com : cdao.readListCombustivel()) {
+        for (Lancamento com : cdao.readListCombustivel()) {
 
             produtos.addRow(new Object[]{
                 com.getId(),
@@ -142,7 +142,7 @@ public class ListCombustivel extends javax.swing.JInternalFrame {
 
         combustiveis.setNumRows(0);
 
-        for (Combustivel sec : cdao.readbuscaNomeCombustivel(nome)) {
+        for (Lancamento sec : cdao.readbuscaNomeCombustivel(nome)) {
 
             combustiveis.addRow(new Object[]{
                 sec.getId(),

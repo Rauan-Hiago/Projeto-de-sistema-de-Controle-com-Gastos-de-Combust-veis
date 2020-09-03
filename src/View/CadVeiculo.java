@@ -5,7 +5,7 @@
  */
 package View;
 
-import ModeloDao.VeiculosDao;
+import ModeloDao.VeiculoDao;
 import Modelos.Veiculo;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -341,7 +341,7 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
 
     public void readTable() {
         DefaultTableModel produtos = (DefaultTableModel) jtveiculo.getModel();
-        VeiculosDao cdao = new VeiculosDao();
+        VeiculoDao cdao = new VeiculoDao();
 
         produtos.setNumRows(0);
 
@@ -362,7 +362,7 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VeiculosDao dao = new VeiculosDao();
+        VeiculoDao dao = new VeiculoDao();
         Veiculo carros = new Veiculo();
         if (txtplaca.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o Campo placa!!!!!");
@@ -422,7 +422,7 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
         } else {
             if (jtveiculo.getSelectedRow() != -1) {
                 Veiculo veic = new Veiculo();
-                VeiculosDao dao = new VeiculosDao();
+                VeiculoDao dao = new VeiculoDao();
 
                 veic.setData(txtdata.getText());
                 veic.setPlaca(txtplaca.getText());
@@ -476,7 +476,7 @@ public class CadVeiculo extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Veiculo veic = new Veiculo();
-        VeiculosDao dao = new VeiculosDao();
+        VeiculoDao dao = new VeiculoDao();
         int confirme = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", title, JOptionPane.YES_NO_OPTION);
         if(confirme == JOptionPane.YES_OPTION){
         if (txtplaca.getText().trim().isEmpty()) {

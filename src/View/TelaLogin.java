@@ -5,7 +5,7 @@
  */
 package View;
 
-import ModeloDao.UsuarioDao;
+import ModeloDao.FuncionarioDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -99,7 +99,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UsuarioDao dao = new UsuarioDao();
+        FuncionarioDao dao = new FuncionarioDao();
 
         if (dao.chekar(txtlogin.getText(), txtsenha.getText())) {
             TelaInicial tela = new TelaInicial();
