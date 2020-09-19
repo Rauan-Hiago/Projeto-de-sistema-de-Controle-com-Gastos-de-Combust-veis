@@ -168,7 +168,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("Excluir");
+        jButton2.setText("Editar");
         jButton2.setPreferredSize(new java.awt.Dimension(71, 50));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
